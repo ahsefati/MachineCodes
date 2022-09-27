@@ -1,0 +1,41 @@
+@import 'antd/dist/antd.css';
+
+@media only screen and (min-width: 200px) {
+    .title{
+        font-size: 3em !important;
+    }
+    .title-desc{
+        font-size: 1.5em !important;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .title{
+        font-size: 4.5em !important;
+    }
+    .title-desc{
+        font-size: 2em !important;
+    }
+}
+
+@media only screen and (min-width: 1600px ) {
+    .title{
+        font-size: 5em !important;
+    }
+    .title-desc{
+        font-size: 2em !important;
+    }
+}
+
+.featuresCard{
+    border: 3px solid rgb(215, 214, 214);
+    border-radius: 10px;
+}
+
+.featuresCard:hover{
+    border-top-color: rgb(60, 60, 238);
+    border-right-color: rgb(60, 60, 238);
+    border-bottom-color: rgb(60, 60, 238);
+    border-left-color: rgb(60, 60, 238);
+    transition: border-top-color 300ms, border-right-color 900ms, border-bottom-color 1500ms, border-left-color 2100ms; 
+}

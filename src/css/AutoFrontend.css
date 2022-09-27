@@ -1,0 +1,24 @@
+@import 'antd/dist/antd.css';
+
+.rowOfFreeTemplates{
+    text-align: center;
+}
+
+.featuresCard{
+    border: 3px solid rgb(215, 214, 214);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.featuresCard:hover{
+    border-top-color: rgb(60, 60, 238);
+    border-right-color: rgb(60, 60, 238);
+    border-bottom-color: rgb(60, 60, 238);
+    border-left-color: rgb(60, 60, 238);
+    transition: border-top-color 300ms, border-right-color 900ms, border-bottom-color 1500ms, border-left-color 2100ms; 
+}
+
+.featuresCard-Selected{
+    border: 3px solid rgb(60, 60, 238);
+    border-radius: 10px;
+}
