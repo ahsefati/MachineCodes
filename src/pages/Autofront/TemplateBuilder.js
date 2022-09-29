@@ -5,7 +5,7 @@ import '../../css/AutoFrontend.css';
 
 import LiveDemo1 from './LiveDemo1';
 import LiveDemo2 from './LiveDemo2';
-
+import LiveDemo3 from './LiveDemo3';
 import LiveDemo4 from './LiveDemo4';
 
 import LayoutOptions from './LayoutOptions';
@@ -236,7 +236,9 @@ const TemplateBuilder = () => {
                                     { selectedLayoutOption=="02" &&
                                         <LiveDemo2 itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
                                     }
-
+                                    { selectedLayoutOption=="03" &&
+                                        <LiveDemo3 itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
+                                    }
                                     { selectedLayoutOption=="04" &&
                                         <LiveDemo4 itemsWithoutIcon={itemsWithoutIcon_4} itemsWithIcon={itemsWithIcon_4} itemsWithJustIcon={itemsWithJustIcon_4} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
                                     }
