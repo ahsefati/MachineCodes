@@ -1,7 +1,6 @@
-import { Button } from 'antd';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout_ from "./pages/Layout_";
+import LayoutMain from "./pages/LayoutMain";
 import Home from "./pages/Home";
 import AutoFrontend from "./pages/AutoFrontend";
 import AutoBackend from "./pages/AutoBackend";
@@ -14,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout_ />}>
+        <Route path="/" element={<LayoutMain />}>
           <Route index element={<Home />} />
           <Route path="autofront" element={<AutoFrontend />} />
           <Route path="autoback" element={<AutoBackend />} />

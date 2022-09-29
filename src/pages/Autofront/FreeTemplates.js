@@ -1,9 +1,9 @@
-import {Col, Row, Typography, Segmented, Space, Divider, Card, Tooltip, Skeleton } from 'antd';
+import {Col, Row, Typography, Divider, Card, Tooltip, Skeleton } from 'antd';
 import { EyeOutlined, HeartFilled, DownloadOutlined } from '@ant-design/icons';
 import { useState, useEffect } from 'react';
 import '../../css/AutoFrontend.css';
 
-const {Title, Text} = Typography
+const {Text} = Typography
 const {Meta} = Card
 
 

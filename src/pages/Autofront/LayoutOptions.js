@@ -1,6 +1,5 @@
-import {Col, Row, Typography, Segmented, Space, Divider, Card, Tooltip, Skeleton } from 'antd';
-import { EyeOutlined, HeartFilled, DownloadOutlined } from '@ant-design/icons';
-import { useState, useEffect, useRef } from 'react';
+import {Row, Typography, Card } from 'antd';
+import { useRef } from 'react';
 import '../../css/AutoFrontend.css';
 
 import CreateOption from './CreateOption';
@@ -11,8 +10,7 @@ import layout03 from '../../assets/AutoFront/TemplateBuilder/Layouts/03.png'
 import layout04 from '../../assets/AutoFront/TemplateBuilder/Layouts/04.png'
 
 
-const {Title, Text} = Typography
-const {Meta} = Card
+const {Title} = Typography
 
 
 

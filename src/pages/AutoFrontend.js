@@ -1,12 +1,9 @@
-import {Col, Row, Typography, Segmented, Space, Divider, Card, Tooltip } from 'antd';
-import { EyeOutlined, HeartFilled, DownloadOutlined } from '@ant-design/icons';
+import {Col, Row, Segmented, Space } from 'antd';
 import { useState } from 'react';
 import '../css/AutoFrontend.css';
 import FreeTemplates from './Autofront/FreeTemplates';
 import TemplateBuilder from './Autofront/TemplateBuilder';
 
-const {Title, Text} = Typography
-const {Meta} = Card
 
 
 const AutoFrontend = () => {
@@ -19,10 +16,10 @@ const AutoFrontend = () => {
                 </Space>
             </Row>
 
-            { (offerValue=="Ready-to-Use") &&
+            { (offerValue==="Ready-to-Use") &&
                 <FreeTemplates/>
             }
-            { (offerValue=="Template Builder") &&
+            { (offerValue==="Template Builder") &&
                 <TemplateBuilder/>
             }
 

@@ -1,11 +1,11 @@
 import {Col, Row, Typography, Card, Divider, Badge, Progress, Steps, Rate, Tooltip } from 'antd';
 import backHome from '../assets/backHome.jpg';
 import '../css/Home.css';
-import {RocketTwoTone, CheckCircleTwoTone, DollarTwoTone, SafetyCertificateTwoTone, CodeTwoTone, RobotOutlined, SettingTwoTone} from '@ant-design/icons';
+import {RocketTwoTone, DollarTwoTone, SafetyCertificateTwoTone, CodeTwoTone, RobotOutlined, SettingTwoTone} from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faHtml5, faCss3, faJs, faReact, faVuejs, faAngular, faNodeJs, faPhp, faPython, faJava, faRProject, faSwift } from '@fortawesome/free-brands-svg-icons'
+import {  faHtml5, faCss3, faJs, faReact, faVuejs, faNodeJs, faPhp, faPython, faJava, faRProject, faSwift } from '@fortawesome/free-brands-svg-icons'
 
 const {Title, Text} = Typography
 const {Step} = Steps

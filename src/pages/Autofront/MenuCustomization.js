@@ -1,14 +1,12 @@
 import {Col, Row, Typography, Divider, Card , Menu, Switch } from 'antd';
-import {InfoCircleOutlined, HomeOutlined, SettingOutlined, UserOutlined, BarChartOutlined } from '@ant-design/icons';
 import { useState, useEffect, useRef, forwardRef } from 'react';
 import '../../css/AutoFrontend.css';
-import CreateOption from './CreateOption';
 
 
 
 
-const {Title, Text, Paragraph} = Typography
-const {Meta} = Card
+const {Text} = Typography
+
 
 
 

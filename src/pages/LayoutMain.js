@@ -1,21 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
-import {Col, Layout, Menu, Row, Space, Typography, Affix } from 'antd';
-import { useState, useEffect } from "react";
+import {Col, Layout, Menu, Row, Typography, Affix } from 'antd';
 import '../css/Layout_.css';
 
 const { Header, Content, Footer } = Layout;
-const {Title, Text} = Typography;
+const {Text} = Typography;
 
 
 
-const Layout_ = () => {
-  
-  const [current, setCurrent] = useState('1');
-
-  const onClickMenu = (e) => {
-    console.log(window.location.href.split("/").pop());
-    setCurrent(e.key);
-  };
+const LayoutMain = () => {
 
   return (
     <>
@@ -33,7 +25,6 @@ const Layout_ = () => {
                     mode="horizontal"
                     defaultSelectedKeys={window.location.href.split("/").pop()?window.location.href.split("/").pop():"Home"}
                     items={[{key:"Home", label:(<Link style={{fontSize:'16px'}} to={'/'}>Home</Link>)},{key:"autofront",label:<Link style={{fontSize:'16px'}} to={'/autofront'}>Front-End</Link>},{key:"autoback",label:<Link style={{fontSize:'16px'}} to={'/autoback'}>Back-End</Link>},{key:"automl",label:<Link style={{fontSize:'16px'}} to={'/automl'}>Machine Learning</Link>},{key:"autoda",label:<Link style={{fontSize:'16px'}} to={'/autoda'}>Data Analysis</Link>},{key:"automobile",label:<Link style={{fontSize:'16px'}} to={'/automobile'}>Mobile Dev</Link>}]}
-                    onClick={onClickMenu}
                   
                   />
                 </Col>
@@ -54,4 +45,4 @@ const Layout_ = () => {
   )
 };
 
-export default Layout_;
+export default LayoutMain;

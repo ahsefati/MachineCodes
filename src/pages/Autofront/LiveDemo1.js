@@ -1,6 +1,6 @@
-import { Breadcrumb, Col, Layout, Menu, Typography, Row, Divider, Switch, Card, Upload, Image, Radio } from 'antd';
+import { Col, Layout, Menu, Typography, Row, Divider, Switch, Card, Upload, Image, Radio } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 const { Header, Content, Footer } = Layout;
 const {Text} = Typography
 
@@ -70,6 +70,7 @@ const LiveDemo1 = (params) => {
     const changeMenuWithIcons = (value) => {
         setMenuWithIcons(value?true:false)
     }
+
     useEffect(()=>{
         if (menuWithIcons){
             params.setItems2([...params.itemsWithIcon])
@@ -128,7 +129,7 @@ const LiveDemo1 = (params) => {
                             checkedChildren="Text"
                             unCheckedChildren="Image"
                         />
-                        {logoType=="Image" && 
+                        {logoType==="Image" && 
                             <Row style={{marginTop:'20px'}}>
                                 <ImgCrop rotate aspect={2}>
                                     <Upload
@@ -138,7 +139,7 @@ const LiveDemo1 = (params) => {
                                     onChange={onChange}
                                     onPreview={onPreview}
                                     >
-                                    {fileList.length == 0 && '+ Upload'}
+                                    {fileList.length === 0 && '+ Upload'}
                                     </Upload>
                                 </ImgCrop>
                             </Row>
@@ -164,13 +165,13 @@ const LiveDemo1 = (params) => {
             </Row>
 
             <Layout style={{background: '#fff', border:'2px solid black'}}>
-                <Header style={{backgroundColor:(logoTheme=='dark'?'#031529':'white'),transition:'300ms',}}>
+                <Header style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms',}}>
                     <Row>
-                        <Col xs={20} sm={15} md={12} xl={4} xlg={4} order={headerOrientation=="Left to Right"?1:2} style={{textAlign:(headerOrientation=="Left to Right"?'left':'right'),}}>
+                        <Col xs={20} sm={15} md={12} xl={4} xlg={4} order={headerOrientation=="Left to Right"?1:2} style={{textAlign:(headerOrientation==="Left to Right"?'left':'right'),}}>
                             {logoType=="Text" &&
-                                <Text style={{color:(logoTheme=='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
+                                <Text style={{color:(logoTheme==='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
                             }
-                            {logoType=="Image" && fileList.length > 0 &&
+                            {logoType==="Image" && fileList.length > 0 &&
                                <Image
                                     width={'80%'}
                                     height={'60%'}
@@ -181,13 +182,13 @@ const LiveDemo1 = (params) => {
                             }
 
                         </Col>
-                        <Col xs={4} sm={9} md={12} xl={20} xlg={20} order={headerOrientation=="Left to Right"?2:1}>
+                        <Col xs={4} sm={9} md={12} xl={20} xlg={20} order={headerOrientation==="Left to Right"?2:1}>
                             <Menu
                                 theme={params.theme}
                                 mode="horizontal"
                                 defaultSelectedKeys={['2']}
                                 items={params.items}
-                                style={{justifyContent: (headerOrientation=="Left to Right"?'flex-end':'flex-start')}}
+                                style={{justifyContent: (headerOrientation==="Left to Right"?'flex-end':'flex-start')}}
                             />
                         </Col>
                     </Row>
@@ -203,12 +204,12 @@ const LiveDemo1 = (params) => {
                     style={{
                     textAlign: footerPosition,
                     fontWeight:'bold',
-                    backgroundColor:(footerTheme=="dark"?'#3E3E3E':'lightgray'),
+                    backgroundColor:(footerTheme==="dark"?'#3E3E3E':'lightgray'),
                     transition:'all 300ms,'
                     }}
                     
                 >
-                    <Text style={{color:(footerTheme=="dark"?'white':'black'),transition:'1000ms'}} editable={{onChange: setFooter}}>{footer}</Text>
+                    <Text style={{color:(footerTheme==="dark"?'white':'black'),transition:'1000ms'}} editable={{onChange: setFooter}}>{footer}</Text>
                 </Footer>
             </Layout>
         </>

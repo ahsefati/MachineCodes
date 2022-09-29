@@ -1,4 +1,4 @@
-import { Breadcrumb, Layout, Menu, Row, Col, Image, Typography, Divider, Card, Switch, Upload, Radio } from 'antd';
+import {Layout, Menu, Row, Col, Image, Typography, Divider, Card, Switch, Upload, Radio } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import React, { useState, useEffect } from 'react';
 const { Header, Content, Footer, Sider } = Layout;
@@ -128,7 +128,7 @@ const LiveDemo2 = (params) => {
                             checkedChildren="Text"
                             unCheckedChildren="Image"
                         />
-                        {logoType=="Image" && 
+                        {logoType==="Image" && 
                             <Row style={{marginTop:'20px'}}>
                                 <ImgCrop rotate aspect={2}>
                                     <Upload
@@ -138,7 +138,7 @@ const LiveDemo2 = (params) => {
                                     onChange={onChange}
                                     onPreview={onPreview}
                                     >
-                                    {fileList.length == 0 && '+ Upload'}
+                                    {fileList.length === 0 && '+ Upload'}
                                     </Upload>
                                 </ImgCrop>
                             </Row>
@@ -168,17 +168,17 @@ const LiveDemo2 = (params) => {
                 <Layout
                     style={{minHeight:'600px', border:'2px black solid'}}
                 >   
-                    { headerOrientation=="Left to Right" &&
+                    { headerOrientation==="Left to Right" &&
                     
-                        <Row style={{backgroundColor:(logoTheme=='dark'?'#031529':'white'),transition:'300ms'}}>
+                        <Row style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms'}}>
                             <Col sm={0} xs={0} md={23} xl={23} xlg={23}>
-                                <Sider style={{backgroundColor:(logoTheme=='dark'?'#031529':'white'),transition:'300ms',}}>
-                                    {logoType=="Text" &&
+                                <Sider style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms',}}>
+                                    {logoType==="Text" &&
                                         <div style={{textAlign:'center', marginTop:'15px', marginBottom:'15px',}}>
-                                            <Text style={{color:(logoTheme=='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
+                                            <Text style={{color:(logoTheme==='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
                                         </div>
                                     }
-                                    {logoType=="Image" && fileList.length > 0 &&
+                                    {logoType==="Image" && fileList.length > 0 &&
                                         <Image
                                             
                                             src={fileList[0]["thumbUrl"]}
@@ -194,13 +194,13 @@ const LiveDemo2 = (params) => {
                     
                     <Layout>
                         <Col sm={24} md={0} xl={0} xlg={0}>
-                            <Header  style={{backgroundColor:(logoTheme=='dark'?'#031529':'white'),transition:'300ms',}}>
+                            <Header  style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms',}}>
                                 <Row>
-                                    <Col xs={20} sm={8} md={8} xl={0} xlg={0} order={headerOrientation=="Left to Right"?1:2} style={{textAlign:(headerOrientation=="Left to Right"?'left':'right'),}}>
-                                        {logoType=="Text" &&
-                                            <Text style={{color:(logoTheme=='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
+                                    <Col xs={20} sm={8} md={8} xl={0} xlg={0} order={headerOrientation==="Left to Right"?1:2} style={{textAlign:(headerOrientation==="Left to Right"?'left':'right'),}}>
+                                        {logoType==="Text" &&
+                                            <Text style={{color:(logoTheme==='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
                                         }
-                                        {logoType=="Image" && fileList.length > 0 &&
+                                        {logoType==="Image" && fileList.length > 0 &&
                                         <Image
                                                 width={'80%'}
                                                 height={'60%'}
@@ -211,13 +211,13 @@ const LiveDemo2 = (params) => {
                                         }
 
                                     </Col>
-                                    <Col xs={4} sm={16} md={16} xl={0} xlg={0} order={headerOrientation=="Left to Right"?2:1}>
+                                    <Col xs={4} sm={16} md={16} xl={0} xlg={0} order={headerOrientation==="Left to Right"?2:1}>
                                         <Menu
                                             theme={params.theme}
                                             mode="horizontal"
                                             defaultSelectedKeys={['2']}
                                             items={params.items}
-                                            style={{justifyContent: (headerOrientation=="Left to Right"?'flex-end':'flex-start')}}
+                                            style={{justifyContent: (headerOrientation==="Left to Right"?'flex-end':'flex-start')}}
                                         />
                                     </Col>
                                 </Row>
@@ -234,26 +234,26 @@ const LiveDemo2 = (params) => {
                             style={{
                             textAlign: footerPosition,
                             fontWeight:'bold',
-                            backgroundColor:(footerTheme=="dark"?'#3E3E3E':'lightgray'),
+                            backgroundColor:(footerTheme==="dark"?'#3E3E3E':'lightgray'),
                             transition:'all 300ms,'
                             }}
                             
                         >
-                            <Text style={{color:(footerTheme=="dark"?'white':'black'),transition:'1000ms'}} editable={{onChange: setFooter}}>{footer}</Text>
+                            <Text style={{color:(footerTheme==="dark"?'white':'black'),transition:'1000ms'}} editable={{onChange: setFooter}}>{footer}</Text>
                         </Footer>
                     </Layout>
 
-                    { headerOrientation=="Right to Left" &&
+                    { headerOrientation==="Right to Left" &&
 
-                        <Row style={{backgroundColor:(logoTheme=='dark'?'#031529':'white'),transition:'300ms'}}>
+                        <Row style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms'}}>
                             <Col sm={0} xs={0} md={23} xl={23} xlg={23}>
-                                <Sider style={{backgroundColor:(logoTheme=='dark'?'#031529':'white'),transition:'300ms',}}>
-                                    {logoType=="Text" &&
+                                <Sider style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms',}}>
+                                    {logoType==="Text" &&
                                         <div style={{textAlign:'center', marginTop:'15px', marginBottom:'15px',}}>
-                                            <Text style={{color:(logoTheme=='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
+                                            <Text style={{color:(logoTheme==='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
                                         </div>
                                     }
-                                    {logoType=="Image" && fileList.length > 0 &&
+                                    {logoType==="Image" && fileList.length > 0 &&
                                         <Image
                                             
                                             src={fileList[0]["thumbUrl"]}

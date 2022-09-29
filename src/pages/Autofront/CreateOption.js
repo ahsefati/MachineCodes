@@ -1,5 +1,5 @@
 import {Col, Card, Skeleton } from 'antd';
-import { useState, useEffect, useRef, forwardRef } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import '../../css/AutoFrontend.css';
 
 const {Meta} = Card
