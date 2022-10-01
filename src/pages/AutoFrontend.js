@@ -1,4 +1,4 @@
-import {Col, Row, Segmented, Space } from 'antd';
+import {Row, Segmented, Space } from 'antd';
 import { useState } from 'react';
 import '../css/AutoFrontend.css';
 import FreeTemplates from './Autofront/FreeTemplates';

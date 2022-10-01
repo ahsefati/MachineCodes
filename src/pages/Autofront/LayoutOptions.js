@@ -1,4 +1,4 @@
-import {Row, Typography, Card } from 'antd';
+import {Row, Typography} from 'antd';
 import { useRef } from 'react';
 import '../../css/AutoFrontend.css';
 

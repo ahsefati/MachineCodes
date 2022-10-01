@@ -167,8 +167,8 @@ const LiveDemo1 = (params) => {
             <Layout style={{background: '#fff', border:'2px solid black'}}>
                 <Header style={{backgroundColor:(logoTheme==='dark'?'#031529':'white'),transition:'300ms',}}>
                     <Row>
-                        <Col xs={20} sm={15} md={12} xl={4} xlg={4} order={headerOrientation=="Left to Right"?1:2} style={{textAlign:(headerOrientation==="Left to Right"?'left':'right'),}}>
-                            {logoType=="Text" &&
+                        <Col xs={20} sm={15} md={12} xl={4} xlg={4} order={headerOrientation==="Left to Right"?1:2} style={{textAlign:(headerOrientation==="Left to Right"?'left':'right'),}}>
+                            {logoType==="Text" &&
                                 <Text style={{color:(logoTheme==='dark'?'white':'#031529'), transition:'1000ms' ,fontWeight:'bold', fontSize:'2em'}} editable={{onChange: setLogo}}>{logo}</Text>
                             }
                             {logoType==="Image" && fileList.length > 0 &&

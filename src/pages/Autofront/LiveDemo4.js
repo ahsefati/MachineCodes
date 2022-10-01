@@ -1,7 +1,7 @@
 import { Col, Layout, Menu, Typography, Row, Divider, Switch, Card, Upload, Image, Radio } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import React, {useState, useEffect } from 'react';
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 const {Text} = Typography
 
 const LiveDemo4 = (params) => {

@@ -66,13 +66,12 @@ const TemplateBuilder = () => {
               {
                   label: (<><Text style={{color:theme==='light'?'black':'white', fontWeight:'bold'}}>General</Text> </>),
                   key: '4:1',
-                  },
-              ,
+                },
               {
                 label: (<><Text style={{color:theme==='light'?'black':'white', fontWeight:'bold'}}>Banking</Text> </>),
                 key: '4:2',
                 },
-            {
+              {
                 label: (<><Text style={{color:theme==='light'?'black':'white', fontWeight:'bold'}}>Housing</Text> </>),
                 key: '4:3',
                 },
@@ -114,12 +113,11 @@ const TemplateBuilder = () => {
                   label: (<><Text style={{color:theme==='light'?'black':'white', fontWeight:'bold'}}>General</Text> </>),
                   key: '4:1',
                   },
-              ,
               {
                 label: (<><Text style={{color:theme==='light'?'black':'white', fontWeight:'bold'}}>Banking</Text> </>),
                 key: '4:2',
                 },
-            {
+              {
                 label: (<><Text style={{color:theme==='light'?'black':'white', fontWeight:'bold'}}>Housing</Text> </>),
                 key: '4:3',
                 },
