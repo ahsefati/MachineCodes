@@ -258,19 +258,20 @@ const LiveDemo3 = (params) => {
                     }
 
                     <Layout>
-                        <Col xs={24} sm={24} md={0}>
-                            <Menu
-                                theme={params.theme}
-                                mode="horizontal"
-                                defaultSelectedKeys={['1']}
-                                defaultOpenKeys={['sub1']}
-                                style={{
-                                    height: '100%',
-                                    borderRight: 0,
-                                }}
-                                items={params.items}
-                            />
-                        </Col>
+                        <Row>
+                            <Col xs={24} sm={24} md={0}>
+                                <Menu
+                                    theme={params.theme}
+                                    mode="horizontal"
+                                    defaultSelectedKeys={['1']}
+                                    defaultOpenKeys={['sub1']}
+                                    style={{
+                                        borderRight: 0,
+                                    }}
+                                    items={params.items}
+                                />
+                            </Col>
+                        </Row>
 
                         <Content style={{
                             textAlign: 'center',
