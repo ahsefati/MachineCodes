@@ -198,7 +198,7 @@ const TemplateBuilder = () => {
             </Row>
             <Divider></Divider>
             
-            <Row justify='center' gutter={[48,36]} style={{marginBottom:'5%'}}>
+            <Row justify='center' style={{marginBottom:'5%'}}>
                 <Col xs={23} sm={23} md={23} lg={23} xl={23} xxl={23}>
                     <Steps direction='horizontal' responsive={false} type='navigation' size='small' current={currentGeneralStep}>
                         <Step title="Layout"/>
@@ -223,21 +223,21 @@ const TemplateBuilder = () => {
                                 <Card style={{marginTop:'1%', minHeight:'400px',}}>
                                     <Title level={4}>Edit to find your desired layout with details.</Title>
                                     { selectedLayoutOption==="01" &&
-                                        <LiveDemo1 itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
+                                        <LiveDemo1 currentGeneralStep={currentGeneralStep}  itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
                                     }
                                     { selectedLayoutOption==="02" &&
-                                        <LiveDemo2 itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
+                                        <LiveDemo2 currentGeneralStep={currentGeneralStep} itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
                                     }
                                     { selectedLayoutOption==="03" &&
-                                        <LiveDemo3 itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
+                                        <LiveDemo3 currentGeneralStep={currentGeneralStep} itemsWithoutIcon={itemsWithoutIcon} itemsWithIcon={itemsWithIcon} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
                                     }
                                     { selectedLayoutOption==="04" &&
-                                        <LiveDemo4 itemsWithoutIcon={itemsWithoutIcon_4} itemsWithIcon={itemsWithIcon_4} itemsWithJustIcon={itemsWithJustIcon_4} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
+                                        <LiveDemo4 currentGeneralStep={currentGeneralStep} itemsWithoutIcon={itemsWithoutIcon_4} itemsWithIcon={itemsWithIcon_4} itemsWithJustIcon={itemsWithJustIcon_4} theme={theme} setTheme={setTheme} items={items2} setItems2={setItems2}/>
                                     }
                                 </Card>
                             }
                             
-                            {currentGeneralStep===5 &&
+                            {currentGeneralStep===3 &&
                                 <Result
                                     status="success"
                                     title="Successfully Finished Declaration!"

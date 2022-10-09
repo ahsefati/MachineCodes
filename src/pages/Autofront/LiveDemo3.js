@@ -1,7 +1,7 @@
 import { Layout, Menu, Image, Typography, Row, Col, Divider, Switch, Card, Radio, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-
 import React, {useEffect, useState} from 'react';
+import CreateContent from './CreateContent';
 const { Header, Content, Footer, Sider } = Layout;
 const {Text} = Typography
 
@@ -278,7 +278,7 @@ const LiveDemo3 = (params) => {
                             minHeight:'500px',
                             backgroundColor:'white'
                             }}>
-                            <div style={{fontSize:'2em', marginTop:'50px'}}>Content of Page</div>
+                            <CreateContent currentGeneralStep={params.currentGeneralStep}/>
                         </Content>
 
                     </Layout>

@@ -23,8 +23,8 @@ const FreeTemplates = () => {
             </Row>
             <Divider></Divider>
             
-            <Row justify='center' gutter={[48,36]} style={{marginBottom:'5%'}}>
-                <Col xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
+            <Row gutter={[0,16]} style={{marginBottom:'5%',}}>
+                <Col style={{margin:'20px'}} xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
                     <Card loading={isCardloading} className='featuresCard'
                         cover={
                             
@@ -49,7 +49,7 @@ const FreeTemplates = () => {
                         
                     </Card>
                 </Col>
-                <Col xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
+                <Col style={{margin:'20px'}} xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
                     <Card loading={isCardloading} className='featuresCard'
                         cover={
                             isCardloading ? <div style={{textAlign:'center'}}><Skeleton.Image  active={isCardloading}/></div> :
@@ -71,7 +71,7 @@ const FreeTemplates = () => {
                         />
                     </Card>
                 </Col>
-                <Col xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
+                <Col style={{margin:'20px'}} xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
                     <Card loading={isCardloading} className='featuresCard'
                         cover={
                             isCardloading ? <div style={{textAlign:'center'}}><Skeleton.Image  active={isCardloading}/></div> :
@@ -93,7 +93,7 @@ const FreeTemplates = () => {
                         />
                     </Card>
                 </Col>
-                <Col xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
+                <Col style={{margin:'20px'}} xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
                     <Card loading={isCardloading} className='featuresCard'
                         cover={
                             isCardloading ? <div style={{textAlign:'center'}}><Skeleton.Image  active={isCardloading}/></div> :
@@ -115,7 +115,8 @@ const FreeTemplates = () => {
                         />
                     </Card>
                 </Col>
-                <Col xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
+                
+                <Col style={{margin:'20px'}} xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
                     <Card loading={isCardloading} className='featuresCard'
                         cover={
                             isCardloading ? <div style={{textAlign:'center'}}><Skeleton.Image  active={isCardloading}/></div> :
@@ -137,7 +138,7 @@ const FreeTemplates = () => {
                         />
                     </Card>
                 </Col>
-                <Col xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
+                <Col style={{margin:'20px'}} xs={23} sm={23} md={11} lg={7} xl={5} xxl={5}>
                     <Card loading={isCardloading} className='featuresCard'
                         cover={
                             isCardloading ? <div style={{textAlign:'center'}}><Skeleton.Image  active={isCardloading}/></div> :
@@ -159,9 +160,7 @@ const FreeTemplates = () => {
                         />
                     </Card>
                 </Col>
-                
             </Row>
-
         </>
 
     );

@@ -22,10 +22,6 @@ const AutoFrontend = () => {
             { (offerValue==="Template Builder") &&
                 <TemplateBuilder/>
             }
-
-
-
-
         </>
 
     );
