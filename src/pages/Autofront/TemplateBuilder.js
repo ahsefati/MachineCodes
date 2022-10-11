@@ -401,6 +401,13 @@ const TemplateBuilder = () => {
         },
   ]
 
+
+  const mcrows = [
+    {id:1, color:'green'},
+    {id:2, color:'red'},
+    {id:3, color:'blue'} 
+  ]
+
   return (
       <>
           
@@ -450,7 +457,7 @@ const TemplateBuilder = () => {
                         {currentGeneralStep===2 &&
                           <Card style={{marginTop:'1%', minHeight:'400px',}}>
                             { selectedLayoutOption==="01" &&
-                              <LiveContentDemo1 currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
+                              <LiveContentDemo1 mcrows={mcrows} currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
                             }
                             { selectedLayoutOption==="02" &&
                               <LiveContentDemo2 currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
@@ -461,6 +468,7 @@ const TemplateBuilder = () => {
                             { selectedLayoutOption==="04" &&
                               <LiveContentDemo4 currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} itemsWithJustIcon={itemsWithJustIcon_4} theme={theme} changeTheme={changeTheme} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} menuPosition={menuPosition} logoPosition={logoPosition} />
                             }
+
                           </Card>
                         }
                         
