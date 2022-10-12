@@ -1,4 +1,4 @@
-import { Col, Layout, Menu, Typography, Row, Divider, Switch, Card, Upload, Image, Radio, Button, Affix, Tooltip, Popover } from 'antd';
+import { Col, Layout, Menu, Typography, Row, Divider, Switch, Card, Upload, Image, Radio, Button, Affix, Tooltip, Select } from 'antd';
 import {PlusCircleOutlined, DeleteOutlined} from '@ant-design/icons';
 
 
@@ -10,19 +10,15 @@ import { useState } from 'react';
 
 const { Header, Content } = Layout;
 const {Text} = Typography
-
+const {Option} = Select
 
 const CreateContent = (params) => {
     
-    
-    const [mcrows, setMcrows] = useState([
-        
-    ])
-
+    const [mcrows, setMcrows] = useState([])
     const [rowCounter, setRowCounter] = useState(0)
 
     const addRow = () => {
-        const newRow = {id:rowCounter + 1,}
+        const newRow = {pageId:params.page.id, id:rowCounter + 1,  justify:'space-around', mccols:[]}
         setMcrows([...mcrows,newRow])
         setRowCounter(rowCounter+1)
     }
@@ -42,10 +38,11 @@ const CreateContent = (params) => {
                 </Row>
             }
             {params.currentGeneralStep===2 &&
-                <div>
+                <div key={params.page.id}>
+
                     <Content style={{minHeight:'450px', overflowY:'auto', maxHeight:'450px'}}>
                         {   
-                            mcrows.map(mcrow =>
+                            mcrows.filter(mcrow => mcrow.pageId == params.page.id).map(mcrow =>
                                 <MCRow createContentMode={createContentMode} key={mcrow.id} mcrows={mcrows} setMcrows={setMcrows} mcrow={mcrow}/>      
                             ) 
                         }
@@ -53,7 +50,22 @@ const CreateContent = (params) => {
                     </Content>
                     <Affix offsetBottom={5} style={{textAlign:'center', margin:'10px'}}>
                         <Row justify='center'>
-                            <Row align='middle' justify='space-around' style={{width:'150px', padding:'5px', backgroundColor:'lightgray', borderRadius:'10px'}}>
+                            <Row align='middle' justify='space-around' style={{width:'250px', padding:'5px', backgroundColor:'lightgray', borderRadius:'10px'}}>
+                                <Select
+                                placement='topLeft'
+                                defaultValue={params.selectedPage}
+                                style={{
+                                    margin:'5px'
+                                }}
+                                onChange={(value)=>params.setSelectedPage(value)}
+                                >
+                                    {
+                                        params.pages.map(page => 
+                                            <Option value={page.id}>{page.name}</Option>
+                                        )
+                                    }
+                                </Select>
+                                <Divider type="vertical"/>
                                 <Tooltip placement='top' title="Add a new row">
                                     <Button onClick={()=>addRow()} type="primary" shape="circle" icon={<PlusCircleOutlined />}/>
                                 </Tooltip>

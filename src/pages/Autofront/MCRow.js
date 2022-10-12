@@ -10,21 +10,35 @@ const {Text} = Typography
 const MCRow = (params) => {
     const borderColors = ['red', 'blue', 'purple', 'green', 'gray', 'orange', 'black']
     
-    const [mccols, setMccols] = useState([])
+    const [mccols, setMccols] = useState(params.mcrow.mccols)
     const [counterAsId, setCounterAsId] = useState(0)
-    const [remainSpan, setRemainSpan] = useState(24)
+
     const addCol = () => {    
         const newCol = {id: counterAsId + 1, spanBig: 5, spanSmall:5, color:borderColors[Math.floor(Math.random()*borderColors.length)]}
         setCounterAsId(counterAsId+1)
         setMccols([...mccols, newCol])
     }
 
+    // Each time a column is added to the row: this will update the MC-columns attribute of the MC-row.
+    useEffect(()=>{
+        params.mcrow.mccols = mccols
+    },[mccols])
+
+    // Run for one time: this will make the selected justify blue!
+    useEffect(()=>{
+        setTimeout(() => {
+            const datatag_final = '[data-tag="'+ "rowJustify:" + params.mcrow.justify +'"]'
+            const selected = document.querySelector(datatag_final);
+            selected.style.color = "blue"
+        }, 500);
+    },[])
+
     const handleRemoveMCRow = (e) => {
         const toRemove = e.currentTarget.dataset.tag
         params.setMcrows(params.mcrows.filter(mcrow => mcrow.id != toRemove))
     }
 
-    const [rowJustify, setRowJustify] = useState("space-around")
+    const [rowJustify, setRowJustify] = useState(params.mcrow.justify)
     const handleChangeRowJustify = (justify_, datatag) => {
         setRowJustify(justify_)
         const start_query = '[data-tag="' + params.mcrow.id + "rowJustify:start" + '"]'
@@ -43,6 +57,7 @@ const MCRow = (params) => {
         const datatag_final = '[data-tag="'+datatag+'"]'
         const selected = document.querySelector(datatag_final);
         selected.style.color = "blue"
+        params.mcrow.justify = justify_
     }
 
     return (
