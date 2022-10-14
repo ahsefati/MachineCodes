@@ -24,15 +24,6 @@ const MCRow = (params) => {
         params.mcrow.mccols = mccols
     },[mccols])
 
-    // Run for one time: this will make the selected justify blue!
-    useEffect(()=>{
-        setTimeout(() => {
-            const datatag_final = '[data-tag="'+ "rowJustify:" + params.mcrow.justify +'"]'
-            const selected = document.querySelector(datatag_final);
-            selected.style.color = "blue"
-        }, 500);
-    },[])
-
     const handleRemoveMCRow = (e) => {
         const toRemove = e.currentTarget.dataset.tag
         params.setMcrows(params.mcrows.filter(mcrow => mcrow.id != toRemove))

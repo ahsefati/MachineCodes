@@ -407,14 +407,18 @@ const TemplateBuilder = () => {
 
   // For Page Stage
   const [pages, setPages] = useState([
-    {id:1, name:'page 1', },
+    {id:1, name:'page 1'},
     {id:2, name:'page 2'}
   ])
-  const [counterForPage, setCounterForPage] = useState(1)
+  const [counterForPage, setCounterForPage] = useState(2)
+
   const addPage = () => {
-    const newPage = {id:counterForPage+1, name: 'page ' + counterForPage}
-    setPages(...pages, newPage)
+    const newPage = {id:counterForPage+1, name: 'page ' + (counterForPage + 1)}
+    setPages([...pages, newPage])
+    setCounterForPage(counterForPage + 1)
+    return newPage.id;
   }
+  
   const [selectedPage, setSelectedPage] = useState(1)
 
   return (
@@ -466,7 +470,7 @@ const TemplateBuilder = () => {
                         {currentGeneralStep===2 &&
                           <Card style={{marginTop:'1%', minHeight:'400px',}}>
                             { selectedLayoutOption==="01" &&
-                              <LiveContentDemo1 pages={pages} addPage={addPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
+                              <LiveContentDemo1 pages={pages} setPages={setPages} addPage={addPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
                             }
                             { selectedLayoutOption==="02" &&
                               <LiveContentDemo2 currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
