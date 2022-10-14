@@ -6,7 +6,7 @@ const {Text} = Typography
 
 const LiveContentDemo1 = (params) => {
     const pageToShow = params.pages.map(page => {return(<CreateContent pages={params.pages} setPages={params.setPages} addPage={params.addPage} page={page} selectedPage={params.selectedPage} setSelectedPage={params.setSelectedPage} currentGeneralStep={params.currentGeneralStep}/>)})
-
+    
     return (
         <>
             <Layout style={{background: '#fff', border:'2px solid black'}}>
@@ -44,7 +44,8 @@ const LiveContentDemo1 = (params) => {
                     backgroundColor:'white'
                     }}>
                     {
-                        pageToShow[params.selectedPage - 1]
+                        // pageToShow[params.selectedPage - 1]
+                        pageToShow.filter((page) => page.props.page.id == params.selectedPage)[0]
                     }
                     {
                         // pageToShow[1]

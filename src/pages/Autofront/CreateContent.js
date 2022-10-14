@@ -1,4 +1,4 @@
-import { Col, Layout, Menu, Typography, Row, Divider, Switch, Popover, Button, Affix, Tooltip, Select } from 'antd';
+import { Col, Layout, Menu, Typography, Row, Divider, Switch, Popover, Button, Affix, Tooltip, Select, Popconfirm, message } from 'antd';
 import { PlusCircleOutlined, SettingOutlined, DeleteOutlined } from '@ant-design/icons';
 
 
@@ -7,6 +7,7 @@ import React from 'react';
 import MCRow from './MCRow';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const { Header, Content } = Layout;
 const { Text } = Typography
@@ -39,34 +40,43 @@ const CreateContent = (params) => {
     const handleOpenChange = (newOpen) => {
         setOpen(newOpen);
         setPageName(params.page.name)
-        const pageSelector_query = '[data-tag="pageSelector"]'
-        const pageSelector = document.querySelector(pageSelector_query);
-        params.setSelectedPage(2)
-        console.log(pageSelector.value)
+        // const pageSelector_query = '[data-tag="pageSelector"]'
+        // const pageSelector = document.querySelector(pageSelector_query);
+        // console.log(pageSelector.value)
+        // params.setSelectedPage(params.pages[0].id)
     };
-
 
     // For animation on deleting a page
     const [loadings, setLoadings] = useState([]);
     const enterLoading = (index) => {
-        setLoadings((prevLoadings) => {
-        const newLoadings = [...prevLoadings];
-        newLoadings[index] = true;
-        let pagesAfterRemove = params.pages.filter(page => page.id != params.selectedPage)
-        params.setPages([...pagesAfterRemove])
-        return newLoadings;
-        });
-        setTimeout(() => {
-        setLoadings((prevLoadings) => {
-            const newLoadings = [...prevLoadings];
-            newLoadings[index] = false;
-            return newLoadings;
-        });
-        }, 6000);
+        if (params.pages.length > 1){
+            setLoadings((prevLoadings) => {
+                
+                    const newLoadings = [...prevLoadings];
+                    newLoadings[index] = true;
+                    let pagesAfterRemove = params.pages.filter(page => page.id != params.selectedPage)
+                    params.setPages([...pagesAfterRemove])
+                    // BUG: If user tries to delete the first page when they have other pages available, it will crash!
+                    params.setSelectedPage(params.pages[0].id)
+                    return newLoadings;
+            });
+            setTimeout(() => {
+                setLoadings((prevLoadings) => {
+                    const newLoadings = [...prevLoadings];
+                    newLoadings[index] = false;
+                    setOpen(false)
+                    message.success("The page deleted successfully!")
+                    return newLoadings;
+                });
+            }, 1000);
+        }else{
+            message.error("You should always have at least one page. operation cancelled.")
+            setOpen(false)
+        }
     };
 
     return (
-        <div>
+        <div data-tag="contentCreator" >
             {params.currentGeneralStep === 1 &&
                 <Row justify='center' style={{ fontSize: '2em', textAlign: 'center', marginTop: '20%' }}>
                     <Text>Page Content Will be here in the next step!</Text>
@@ -97,9 +107,6 @@ const CreateContent = (params) => {
                                         data-tag="pageSelector"
                                         onChange={(value) => {
                                             if (value !== "newPage") {
-                                                console.log("Page Changes!")
-                                                console.log("New page id: ", value)
-                                                console.log("Now the pages is: ", params.pages)
                                                 params.setSelectedPage(value)
                                             } else {
                                                 var newPageId = params.addPage()
@@ -111,7 +118,7 @@ const CreateContent = (params) => {
                                     >
                                         {
                                             params.pages.map(page =>
-                                                <Option value={page.id}>{page.id}</Option>
+                                                <Option value={page.id}>{page.name}</Option>
                                             )
                                         }
                                         <Option value={"newPage"}>{"+"}</Option>
@@ -126,16 +133,23 @@ const CreateContent = (params) => {
                                                 <>
                                                     <Text style={{ fontWeight: 'bold', fontSize: 'large' }} editable={{ onChange: setNewNameForPage }}>{pageName}</Text>
                                                     <br/>
-                                                    <Button
-                                                        style={{marginTop:'5px'}}
-                                                        type="danger"
-                                                        shape='round'
-                                                        icon={<DeleteOutlined />}
-                                                        loading={loadings[1]}
-                                                        onClick={() => enterLoading(1)}
-                                                        >
-                                                        Delete Page
-                                                    </Button>
+                                                    <Popconfirm
+                                                        title="Are you sure to delete this page?"
+                                                        onConfirm={() => enterLoading(1)}
+                                                        placement="rightBottom"
+                                                        okText="Yes"
+                                                        cancelText="No"
+                                                    >
+                                                        <Button
+                                                            style={{marginTop:'5px'}}
+                                                            type="danger"
+                                                            shape='round'
+                                                            icon={<DeleteOutlined />}
+                                                            loading={loadings[1]}
+                                                            >
+                                                            Delete Page
+                                                        </Button>
+                                                    </Popconfirm>
                                                 </>
                                             }
                                             trigger="click"

@@ -1,4 +1,4 @@
-import {Col, Row, Typography, Divider, Card, Steps, Button, Result, Affix } from 'antd';
+import {Col, Row, Typography, Divider, Card, Steps, Button, Result, Affix, message } from 'antd';
 import { QuestionCircleOutlined, DownloadOutlined, RightCircleFilled, LeftCircleFilled, HomeOutlined, SettingOutlined, UserOutlined, BarChartOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import '../../css/AutoFrontend.css';
@@ -416,6 +416,7 @@ const TemplateBuilder = () => {
     const newPage = {id:counterForPage+1, name: 'page ' + (counterForPage + 1)}
     setPages([...pages, newPage])
     setCounterForPage(counterForPage + 1)
+    message.success("New page added!")
     return newPage.id;
   }
   
