@@ -5,7 +5,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const {Text} = Typography
 
 const LiveContentDemo3 = (params) => {
-
+    const pageToShow = params.pages.map(page => {return(<CreateContent pages={params.pages} setPages={params.setPages} addPage={params.addPage} page={page} selectedPage={params.selectedPage} setSelectedPage={params.setSelectedPage} currentGeneralStep={params.currentGeneralStep}/>)})
 
     return (
         <>
@@ -76,10 +76,17 @@ const LiveContentDemo3 = (params) => {
 
                         <Content style={{
                             textAlign: 'center',
-                            minHeight:'500px',
+                            minHeight:'450px',
                             backgroundColor:'white'
                             }}>
-                            <CreateContent currentGeneralStep={params.currentGeneralStep}/>
+                            {
+                                // pageToShow[params.selectedPage - 1]
+                                pageToShow.filter((page) => page.props.page.id == params.selectedPage)[0]
+                            }
+                            {
+                                // pageToShow[1]
+                            }
+                                
                         </Content>
 
                     </Layout>

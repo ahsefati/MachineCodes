@@ -424,21 +424,17 @@ const TemplateBuilder = () => {
 
   return (
       <>
-          
-        <Row justify='center' align='middle' style={{margin:'1%'}}>
-            <Text>After following the steps below, The Machine will generate all the files for you! Automatically and completely FREE!</Text><Text style={{color:'red', marginLeft:'5px'}}>Need Help?</Text>
-        </Row>
-        <Divider></Divider>
         
         <Row justify='center' style={{marginBottom:'5%'}}>
             <Col xs={23} sm={23} md={23} lg={23} xl={23} xxl={23}>
                 <Affix offsetTop={0}>
-                  <Steps style={{backgroundColor:'#DCEBFF'}} direction='horizontal' responsive={false} type='navigation' size='small' current={currentGeneralStep}>
+                  <Steps style={{backgroundColor:'#DCEBFF', marginTop:'10px'}} direction='horizontal' responsive={false} type='navigation' size='small' current={currentGeneralStep}>
                       <Step title="Layout"/>
                       <Step title="Layout Details"/>
                       <Step title="Pages"/>
                   </Steps>
                 </Affix>
+
                 <Row justify='space-around' style={{minHeight:'400px'}} align='middle'>
                     <Col xs={{span:1, order:2}} sm={{span:1, order:2}} md={{span:1, order:2}} lg={{span:1,order:1}}>
                         { currentGeneralStep!==0 &&
@@ -474,13 +470,13 @@ const TemplateBuilder = () => {
                               <LiveContentDemo1 pages={pages} setPages={setPages} addPage={addPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
                             }
                             { selectedLayoutOption==="02" &&
-                              <LiveContentDemo2 currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
+                              <LiveContentDemo2 pages={pages} setPages={setPages} addPage={addPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
                             }
                             { selectedLayoutOption==="03" &&
-                              <LiveContentDemo3 currentGeneralStep={currentGeneralStep} items1_3={items1_3} sideMenuOrientation={sideMenuOrientation} changeSideMenuOrientation={changeSideMenuOrientation} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} topMenuTheme={topMenuTheme} changeTopMenuTheme={changeTopMenuTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
+                              <LiveContentDemo3 pages={pages} setPages={setPages} addPage={addPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} currentGeneralStep={currentGeneralStep} items1_3={items1_3} sideMenuOrientation={sideMenuOrientation} changeSideMenuOrientation={changeSideMenuOrientation} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} theme={theme} changeTheme={changeTheme} topMenuTheme={topMenuTheme} changeTopMenuTheme={changeTopMenuTheme} headerOrientation={headerOrientation} changeHeaderOrientation={changeHeaderOrientation} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} footer={footer} footerPosition={footerPosition} handleFooterPositionChange={handleFooterPositionChange} footerTheme={footerTheme} changeFooterTheme={changeFooterTheme} />
                             }
                             { selectedLayoutOption==="04" &&
-                              <LiveContentDemo4 currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} itemsWithJustIcon={itemsWithJustIcon_4} theme={theme} changeTheme={changeTheme} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} menuPosition={menuPosition} logoPosition={logoPosition} />
+                              <LiveContentDemo4 pages={pages} setPages={setPages} addPage={addPage} selectedPage={selectedPage} setSelectedPage={setSelectedPage} currentGeneralStep={currentGeneralStep} menuWithIcons={menuWithIcons} changeMenuWithIcons={changeMenuWithIcons}  itemsWithoutIconFinal={itemsWithoutIconFinal} itemsWithIconFinal={itemsWithIconFinal} itemsWithJustIcon={itemsWithJustIcon_4} theme={theme} changeTheme={changeTheme} logo={logo}  logoType={logoType} logoTheme={logoTheme} changeLogoType={changeLogoType} fileList={fileList} changeLogoTheme={changeLogoTheme} onChange={onChange} onPreview={onPreview} menuPosition={menuPosition} logoPosition={logoPosition} />
                             }
 
                           </Card>
@@ -507,11 +503,6 @@ const TemplateBuilder = () => {
                         }
                     </Col>
                 </Row>
-                    
-              
-                
-
-
             </Col>
             
             

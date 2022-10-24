@@ -1,8 +1,8 @@
 import { Col, Layout, Menu, Typography, Row, Divider, Switch, Popover, Button, Affix, Tooltip, Select, Popconfirm, message } from 'antd';
-import { PlusCircleOutlined, SettingOutlined, DeleteOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, SettingOutlined, DeleteOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons';
 
 
-import React from 'react';
+import React, { useRef } from 'react';
 
 import MCRow from './MCRow';
 import { useEffect } from 'react';
@@ -14,6 +14,8 @@ const { Text } = Typography
 const { Option } = Select
 
 const CreateContent = (params) => {
+    // Containers for elements in fullscreen mode
+    const containerRef = useRef(null);
 
     const [mcrows, setMcrows] = useState([])
     const [rowCounter, setRowCounter] = useState(0)
@@ -75,17 +77,35 @@ const CreateContent = (params) => {
         }
     };
 
+
+    // Full screen configs
+    const [fullscreen, setFullscreen] = useState(false)
+    const makeFullscreen = () => {
+        if (fullscreen){
+            document.querySelector('[data-tag="mainContentDiv"]').style.height = "500px"
+            document.querySelector('[data-tag="mainContentDiv"]').style.maxHeight = "700px"
+            document.exitFullscreen();
+            setFullscreen(false)
+        }else{
+            setFullscreen(true)
+            document.querySelector('[data-tag="mainContentDiv"]').style.maxHeight = "80vh"
+            document.querySelector('[data-tag="mainContentDiv"]').style.height = "850px"
+            document.querySelector('[data-tag="mainLayout"]').requestFullscreen()
+        }
+        
+    }
+
     return (
-        <div data-tag="contentCreator" >
+        <div data-tag="contentCreator">
             {params.currentGeneralStep === 1 &&
-                <Row justify='center' style={{ fontSize: '2em', textAlign: 'center', marginTop: '20%' }}>
+                <Row justify='center' style={{ fontSize: '2em', textAlign: 'center', marginTop: '10%' }}>
                     <Text>Page Content Will be here in the next step!</Text>
                 </Row>
             }
             {params.currentGeneralStep === 2 &&
-                <div key={params.page.id}>
+                <div key={params.page.id} data-tag="mainContainer">
 
-                    <Content style={{ minHeight: '450px', overflowY: 'auto', maxHeight: '450px' }}>
+                    <Content data-tag="mainContentDiv" style={{ height: '500px', overflowY: 'auto', maxHeight: '850px' }}>
                         {
                             mcrows.filter(mcrow => mcrow.pageId == params.page.id).map(mcrow =>
                                 <MCRow createContentMode={createContentMode} key={mcrow.id} mcrows={mcrows} setMcrows={setMcrows} mcrow={mcrow} />
@@ -93,16 +113,26 @@ const CreateContent = (params) => {
                         }
 
                     </Content>
-                    <Affix offsetBottom={5} style={{ textAlign: 'center', margin: '10px' }}>
-                        <Row justify='center'>
-                            <Row align='middle' justify='start' style={{ width: '340px', padding: '5px', backgroundColor: 'lightgray', borderRadius: '10px' }}>
+                    <Affix offsetBottom={5} style={{ textAlign: 'center', margin: '10px', bottom:'0px !important'}}>
+                        <Row justify='center' align='middle'>
+                            <Row>
+                                {fullscreen && 
+                                    <Button style={{ marginRight: '5px' }} onClick={makeFullscreen} shape="circle" icon={<FullscreenExitOutlined />} />
+                                }
+                                {!fullscreen && 
+                                    <Button style={{ marginRight: '5px' }} onClick={makeFullscreen} shape="circle" icon={<FullscreenOutlined />} />
+                                }
+                            </Row>
+                            <Row align='middle' justify='space-around' style={{ width: '340px', padding: '5px', backgroundColor: 'lightgray', borderRadius: '10px' }}>
                                 <Col flex={"120px"}>
                                     <Select
+                                        getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                                         placement='topLeft'
                                         defaultValue={params.selectedPage}
                                         style={{
                                             margin: '5px',
-                                            width: '120px'
+                                            width: '120px',
+                                            zIndex:1000
                                         }}
                                         data-tag="pageSelector"
                                         onChange={(value) => {
@@ -124,16 +154,20 @@ const CreateContent = (params) => {
                                         <Option value={"newPage"}>{"+"}</Option>
                                     </Select>
                                 </Col>
+                                
                                 <Divider type="vertical" />
 
                                 <Col flex={"auto"}>
                                     <Row style={{ border: '2px solid darkgray', padding: '2px', borderRadius: '5px' }} justify='space-around' align='middle'>
                                         <Popover
+                                            getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
+                                            
                                             content={
                                                 <>
                                                     <Text style={{ fontWeight: 'bold', fontSize: 'large' }} editable={{ onChange: setNewNameForPage }}>{pageName}</Text>
                                                     <br/>
                                                     <Popconfirm
+                                                        getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                                                         title="Are you sure to delete this page?"
                                                         onConfirm={() => enterLoading(1)}
                                                         placement="rightBottom"

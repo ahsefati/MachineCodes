@@ -1,4 +1,5 @@
 import { Col, Layout, Menu, Typography, Row, Image } from 'antd';
+import { Button } from 'antd/lib/radio';
 import React from 'react';
 import CreateContent from './CreateContent';
 const { Header, Content, Footer } = Layout;
@@ -6,10 +7,10 @@ const {Text} = Typography
 
 const LiveContentDemo1 = (params) => {
     const pageToShow = params.pages.map(page => {return(<CreateContent pages={params.pages} setPages={params.setPages} addPage={params.addPage} page={page} selectedPage={params.selectedPage} setSelectedPage={params.setSelectedPage} currentGeneralStep={params.currentGeneralStep}/>)})
-    
+
     return (
         <>
-            <Layout style={{background: '#fff', border:'2px solid black'}}>
+            <Layout data-tag="mainLayout" style={{background: '#fff', border:'2px solid black', zIndex:10}}>
                 <Header style={{backgroundColor:(params.logoTheme==='dark'?'#031529':'white'),transition:'300ms',}}>
                     <Row>
                         <Col xs={20} sm={15} md={12} xl={4} xlg={4} order={params.headerOrientation==="Left to Right"?1:2} style={{textAlign:(params.headerOrientation==="Left to Right"?'left':'right'),}}>
@@ -29,6 +30,7 @@ const LiveContentDemo1 = (params) => {
                         </Col>
                         <Col xs={4} sm={9} md={12} xl={20} xlg={20} order={params.headerOrientation==="Left to Right"?2:1}>
                             <Menu
+                                getPopupContainer={()=>document.querySelector('[data-tag="mainLayout"]')}
                                 theme={params.theme}
                                 mode="horizontal"
                                 defaultSelectedKeys={['2']}
