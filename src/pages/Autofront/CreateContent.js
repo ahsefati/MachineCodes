@@ -1,5 +1,5 @@
 import { Col, Layout, Menu, Typography, Row, Divider, Switch, Popover, Button, Affix, Tooltip, Select, Popconfirm, message } from 'antd';
-import { PlusCircleOutlined, SettingOutlined, DeleteOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, SettingOutlined, DeleteOutlined, FullscreenOutlined, FullscreenExitOutlined, DragOutlined } from '@ant-design/icons';
 
 
 import React, { useRef } from 'react';
@@ -8,6 +8,8 @@ import MCRow from './MCRow';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { faL } from '@fortawesome/free-solid-svg-icons';
+
+import Draggable from 'react-draggable';
 
 const { Header, Content } = Layout;
 const { Text } = Typography
@@ -89,7 +91,7 @@ const CreateContent = (params) => {
         }else{
             setFullscreen(true)
             document.querySelector('[data-tag="mainContentDiv"]').style.maxHeight = "80vh"
-            document.querySelector('[data-tag="mainContentDiv"]').style.height = "850px"
+            document.querySelector('[data-tag="mainContentDiv"]').style.height = "80vh"
             document.querySelector('[data-tag="mainLayout"]').requestFullscreen()
         }
         
@@ -113,100 +115,103 @@ const CreateContent = (params) => {
                         }
 
                     </Content>
-                    <Affix offsetBottom={5} style={{ textAlign: 'center', margin: '10px', bottom:'0px !important'}}>
-                        <Row justify='center' align='middle'>
-                            <Row>
-                                {fullscreen && 
-                                    <Button style={{ marginRight: '5px' }} onClick={makeFullscreen} shape="circle" icon={<FullscreenExitOutlined />} />
-                                }
-                                {!fullscreen && 
-                                    <Button style={{ marginRight: '5px' }} onClick={makeFullscreen} shape="circle" icon={<FullscreenOutlined />} />
-                                }
-                            </Row>
-                            <Row align='middle' justify='space-around' style={{ width: '340px', padding: '5px', backgroundColor: 'lightgray', borderRadius: '10px' }}>
-                                <Col flex={"120px"}>
-                                    <Select
-                                        getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
-                                        placement='topLeft'
-                                        defaultValue={params.selectedPage}
-                                        style={{
-                                            margin: '5px',
-                                            width: '120px',
-                                            zIndex:1000
-                                        }}
-                                        data-tag="pageSelector"
-                                        onChange={(value) => {
-                                            if (value !== "newPage") {
-                                                params.setSelectedPage(value)
-                                            } else {
-                                                var newPageId = params.addPage()
-                                                params.setSelectedPage(newPageId)
-                                            }
-
-                                        }
-                                        }
-                                    >
-                                        {
-                                            params.pages.map(page =>
-                                                <Option value={page.id}>{page.name}</Option>
-                                            )
-                                        }
-                                        <Option value={"newPage"}>{"+"}</Option>
-                                    </Select>
-                                </Col>
-                                
-                                <Divider type="vertical" />
-
-                                <Col flex={"auto"}>
-                                    <Row style={{ border: '2px solid darkgray', padding: '2px', borderRadius: '5px' }} justify='space-around' align='middle'>
-                                        <Popover
+                    <Draggable>
+                        <Affix offsetBottom={5} style={{ textAlign: 'center', margin: '10px',}}>
+                            <Row justify='center' align='middle'>
+                                <Row>
+                                    <Button style={{ marginRight: '5px' }} shape="circle" icon={<DragOutlined />} />
+                                    {fullscreen && 
+                                        <Button style={{ marginRight: '5px' }} onClick={makeFullscreen} shape="circle" icon={<FullscreenExitOutlined />} />
+                                    }
+                                    {!fullscreen && 
+                                        <Button style={{ marginRight: '5px' }} onClick={makeFullscreen} shape="circle" icon={<FullscreenOutlined />} />
+                                    }
+                                </Row>
+                                <Row align='middle' justify='space-around' style={{ width: '380px', padding: '5px', backgroundColor: 'lightgray', borderRadius: '10px',boxShadow:'3px 3px gray' }}>
+                                    <Col flex={"120px"}>
+                                        <Select
                                             getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
-                                            
-                                            content={
-                                                <>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 'large' }} editable={{ onChange: setNewNameForPage }}>{pageName}</Text>
-                                                    <br/>
-                                                    <Popconfirm
-                                                        getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
-                                                        title="Are you sure to delete this page?"
-                                                        onConfirm={() => enterLoading(1)}
-                                                        placement="rightBottom"
-                                                        okText="Yes"
-                                                        cancelText="No"
-                                                    >
-                                                        <Button
-                                                            style={{marginTop:'5px'}}
-                                                            type="danger"
-                                                            shape='round'
-                                                            icon={<DeleteOutlined />}
-                                                            loading={loadings[1]}
-                                                            >
-                                                            Delete Page
-                                                        </Button>
-                                                    </Popconfirm>
-                                                </>
-                                            }
-                                            trigger="click"
-                                            open={open}
-                                            onOpenChange={handleOpenChange}
-                                        >
-                                            <Button style={{ marginRight: '5px' }} type="primary" shape="circle" icon={<SettingOutlined />} />
-                                        </Popover>
+                                            placement='topLeft'
+                                            defaultValue={params.selectedPage}
+                                            style={{
+                                                margin: '5px',
+                                                width: '120px',
+                                                zIndex:1000
+                                            }}
+                                            data-tag="pageSelector"
+                                            onChange={(value) => {
+                                                if (value !== "newPage") {
+                                                    params.setSelectedPage(value)
+                                                } else {
+                                                    var newPageId = params.addPage()
+                                                    params.setSelectedPage(newPageId)
+                                                }
 
-                                        <Tooltip placement='top' title="Add a new row">
-                                            <Button style={{ marginRight: '5px' }} onClick={() => addRow()} type="primary" shape="circle" icon={<PlusCircleOutlined />} />
-                                        </Tooltip>
-                                        <Switch
-                                            checked={createContentMode === "Edit Mode"}
-                                            onChange={handleCreateContentModeChange}
-                                            checkedChildren="Edit Mode"
-                                            unCheckedChildren="View Mode"
-                                        />
-                                    </Row>
-                                </Col>
+                                            }
+                                            }
+                                        >
+                                            {
+                                                params.pages.map(page =>
+                                                    <Option value={page.id}>{page.name}</Option>
+                                                )
+                                            }
+                                            <Option value={"newPage"}>{"+"}</Option>
+                                        </Select>
+                                    </Col>
+                                    
+                                    <Divider type="vertical" />
+
+                                    <Col flex={"auto"}>
+                                        <Row style={{ border: '2px solid darkgray', padding: '2px', borderRadius: '5px' }} justify='space-around' align='middle'>
+                                            <Popover
+                                                getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
+                                                
+                                                content={
+                                                    <>
+                                                        <Text style={{ fontWeight: 'bold', fontSize: 'large' }} editable={{ onChange: setNewNameForPage }}>{pageName}</Text>
+                                                        <br/>
+                                                        <Popconfirm
+                                                            getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
+                                                            title="Are you sure to delete this page?"
+                                                            onConfirm={() => enterLoading(1)}
+                                                            placement="rightBottom"
+                                                            okText="Yes"
+                                                            cancelText="No"
+                                                        >
+                                                            <Button
+                                                                style={{marginTop:'5px'}}
+                                                                type="danger"
+                                                                shape='round'
+                                                                icon={<DeleteOutlined />}
+                                                                loading={loadings[1]}
+                                                                >
+                                                                Delete Page
+                                                            </Button>
+                                                        </Popconfirm>
+                                                    </>
+                                                }
+                                                trigger="click"
+                                                open={open}
+                                                onOpenChange={handleOpenChange}
+                                            >
+                                                <Button style={{ marginRight: '5px' }} type="primary" shape="circle" icon={<SettingOutlined />} />
+                                            </Popover>
+
+                                            <Tooltip placement='top' title="Add a new row">
+                                                <Button style={{ marginRight: '5px' }} onClick={() => addRow()} type="primary" shape="circle" icon={<PlusCircleOutlined />} />
+                                            </Tooltip>
+                                            <Switch
+                                                checked={createContentMode === "Edit Mode"}
+                                                onChange={handleCreateContentModeChange}
+                                                checkedChildren="Edit Mode"
+                                                unCheckedChildren="View Mode"
+                                            />
+                                        </Row>
+                                    </Col>
+                                </Row>
                             </Row>
-                        </Row>
-                    </Affix>
+                        </Affix>
+                    </Draggable>
                 </div>
             }
         </div>

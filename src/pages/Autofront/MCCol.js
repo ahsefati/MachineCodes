@@ -1,5 +1,5 @@
-import { Col, Layout, Menu, Typography, Row, Select, Popover } from 'antd';
-import {DeleteOutlined, SettingOutlined} from '@ant-design/icons';
+import { Col, Layout, Menu, Typography, Row, Select, Popover, Drawer, Space, Input } from 'antd';
+import {DeleteOutlined, SettingOutlined, PlusOutlined, CaretUpOutlined, CaretDownOutlined} from '@ant-design/icons';
 
 import React, {useState, useEffect } from 'react';
 const { Header, Content } = Layout;
@@ -13,7 +13,7 @@ const MCCol = (params) => {
         params.setMccols(params.mccols.filter((mccol)=>(mccol.id != toRemove)))
         setOpen(false);
     }
-
+    // For setting of column popover
     const [open, setOpen] = useState(false);
 
     const handleScaleChangeBig = (value) => {
@@ -31,16 +31,31 @@ const MCCol = (params) => {
     };
 
 
+
+    // Handle the Modal for choosing the component
+    const [openModal, setOpenModal] = useState(false);
+    const [sizeOfModal, setSizeofModal] = useState('default')
+    const showModal = () => {
+        setOpenModal(true);
+    };
+
+    const closeModal = () => {
+        setOpenModal(false);
+    };
+
+
     return (
-        <Col style={{minHeight:'150px', minWidth:'100px', margin:'5px', border:'1px solid', borderRadius:'5px',borderColor:params.mccol.color}} xs={{span:params.mccol.spanSmall}} sm={{span:params.mccol.spanSmall}} md={{span:params.mccol.spanBig}} lg={{span:params.mccol.spanBig}} xl={{span:params.mccol.spanBig}} xxl={{span:params.mccol.spanBig}}>    
+        <Col style={{minHeight:'150px', minWidth:'100px', margin:'5px', border:'1px solid', borderRadius:'5px',borderColor:'gray'}} xs={{span:params.mccol.spanSmall}} sm={{span:params.mccol.spanSmall}} md={{span:params.mccol.spanBig}} lg={{span:params.mccol.spanBig}} xl={{span:params.mccol.spanBig}} xxl={{span:params.mccol.spanBig}}>    
             <Row justify='start' align='middle'>
                 {params.createContentMode == "Edit Mode" &&
                     <Popover
+                        getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                         content={
                             <>
                             <DeleteOutlined data-tag={params.mccol.id} onClick={handleRemoveMCCol} style={{cursor:'pointer', margin:'5px'}}/>
                             <Text>Big Screen:</Text>
                             <Select
+                                getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                                 defaultValue={params.mccol.spanBig}
                                 style={{
                                     width: 60,
@@ -75,6 +90,7 @@ const MCCol = (params) => {
                             </Select>
                             <Text>Small Screen:</Text>
                             <Select
+                                getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                                 defaultValue={params.mccol.spanSmall}
                                 style={{
                                     width: 60,
@@ -115,11 +131,39 @@ const MCCol = (params) => {
                         open={open}
                         onOpenChange={handleOpenChange}
                         >
-                        <SettingOutlined style={{cursor:'pointer', margin:'5px'}} />
+                            <SettingOutlined style={{cursor:'pointer', margin:'5px'}} />
                     </Popover>
                 }
         
             </Row>
+            <Row justify='center' align='middle' style={{marginTop:'25px'}}>
+                <PlusOutlined onClick={showModal} style={{fontSize:'2em', cursor:'pointer', color:'blue', border:'2px solid blue', borderRadius:'5px'}}/>
+            </Row>
+            <Drawer
+                title={"Items"}
+                size={sizeOfModal}
+                placement={'bottom'}
+                width={600}
+                onClose={closeModal}
+                open={openModal}
+                extra={
+                <Space style={{width:200}}>
+                    <Input.Search
+                            width="100%"
+                            allowClear
+                            placeholder="Search Here..."
+                    />
+                    {sizeOfModal==="default" && 
+                        <CaretUpOutlined onClick={()=>setSizeofModal('large')} />
+                    }
+                    {sizeOfModal==="large" &&
+                        <CaretDownOutlined onClick={()=>setSizeofModal('default')} />
+                    }
+                </Space>
+                }
+            >
+                <Text>{params.mccol.id}</Text>
+            </Drawer>
 
         </Col>
     )

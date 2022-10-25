@@ -8,13 +8,12 @@ const { Header, Content } = Layout;
 const {Text} = Typography
 
 const MCRow = (params) => {
-    const borderColors = ['red', 'blue', 'purple', 'green', 'gray', 'orange', 'black']
     
     const [mccols, setMccols] = useState(params.mcrow.mccols)
     const [counterAsId, setCounterAsId] = useState(0)
 
     const addCol = () => {    
-        const newCol = {id: counterAsId + 1, spanBig: 5, spanSmall:5, color:borderColors[Math.floor(Math.random()*borderColors.length)]}
+        const newCol = {id: counterAsId + 1, spanBig: 5, spanSmall:5,}
         setCounterAsId(counterAsId+1)
         setMccols([...mccols, newCol])
     }
