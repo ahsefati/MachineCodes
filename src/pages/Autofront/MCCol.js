@@ -2,6 +2,8 @@ import { Col, Layout, Menu, Typography, Row, Select, Popover, Drawer, Space, Inp
 import {DeleteOutlined, SettingOutlined, PlusOutlined, CaretUpOutlined, CaretDownOutlined} from '@ant-design/icons';
 
 import React, {useState, useEffect } from 'react';
+import DrawerItems from './DrawerItems';
+
 const { Header, Content } = Layout;
 const {Option} = Select
 const {Text} = Typography
@@ -34,7 +36,7 @@ const MCCol = (params) => {
 
     // Handle the Modal for choosing the component
     const [openModal, setOpenModal] = useState(false);
-    const [sizeOfModal, setSizeofModal] = useState('default')
+    const [sizeOfModal, setSizeofModal] = useState('378px')
     const showModal = () => {
         setOpenModal(true);
     };
@@ -139,31 +141,8 @@ const MCCol = (params) => {
             <Row justify='center' align='middle' style={{marginTop:'25px'}}>
                 <PlusOutlined onClick={showModal} style={{fontSize:'2em', cursor:'pointer', color:'blue', border:'2px solid blue', borderRadius:'5px'}}/>
             </Row>
-            <Drawer
-                title={"Items"}
-                size={sizeOfModal}
-                placement={'bottom'}
-                width={600}
-                onClose={closeModal}
-                open={openModal}
-                extra={
-                <Space style={{width:200}}>
-                    <Input.Search
-                            width="100%"
-                            allowClear
-                            placeholder="Search Here..."
-                    />
-                    {sizeOfModal==="default" && 
-                        <CaretUpOutlined onClick={()=>setSizeofModal('large')} />
-                    }
-                    {sizeOfModal==="large" &&
-                        <CaretDownOutlined onClick={()=>setSizeofModal('default')} />
-                    }
-                </Space>
-                }
-            >
-                <Text>{params.mccol.id}</Text>
-            </Drawer>
+            
+            <DrawerItems sizeOfModal={sizeOfModal} setSizeofModal={setSizeofModal} openModal={openModal} closeModal={closeModal} />
 
         </Col>
     )
