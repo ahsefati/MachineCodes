@@ -15,8 +15,17 @@ import inputItem from '../../assets/AutoFront/TemplateBuilder/Items/inputItem.pn
 import checkboxItem from '../../assets/AutoFront/TemplateBuilder/Items/CheckboxItem.png'
 import radioItem from '../../assets/AutoFront/TemplateBuilder/Items/RadioItem.png'
 import selectItem from '../../assets/AutoFront/TemplateBuilder/Items/SelectItem.png'
+import treeselectItem from '../../assets/AutoFront/TemplateBuilder/Items/TreeselectItem.png'
 import sliderItem from '../../assets/AutoFront/TemplateBuilder/Items/SliderItem.png'
 import switchItem from '../../assets/AutoFront/TemplateBuilder/Items/SwitchItem.png'
+import datepickerItem from '../../assets/AutoFront/TemplateBuilder/Items/DatepickerItem.png'
+import rateItem from '../../assets/AutoFront/TemplateBuilder/Items/RateItem.png'
+import cardItem from '../../assets/AutoFront/TemplateBuilder/Items/CardItem.png'
+import carouselItem from '../../assets/AutoFront/TemplateBuilder/Items/CarouselItem.png'
+import avatarItem from '../../assets/AutoFront/TemplateBuilder/Items/AvatarItem.png'
+import calendarItem from '../../assets/AutoFront/TemplateBuilder/Items/CalendarItem.png'
+import segmentItem from '../../assets/AutoFront/TemplateBuilder/Items/SegmentItem.png'
+import timelineItem from '../../assets/AutoFront/TemplateBuilder/Items/TimelineItem.png'
 
 const { Header, Content } = Layout;
 const {Text} = Typography
@@ -143,6 +152,22 @@ const DrawerItems = (params) => {
                     <Col sm={12} md={6} lg={4} xl={3}>
                         <Card
                             hoverable
+                            cover={<img alt="Treeselect Component" src={treeselectItem}/>}
+                        >
+                            <Meta title="Tree Select"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Segmented Component" src={segmentItem}/>}
+                        >
+                            <Meta title="Segment"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
                             cover={<img alt="Slider Component" src={sliderItem}/>}
                         >
                             <Meta title="Slider"/>
@@ -156,6 +181,63 @@ const DrawerItems = (params) => {
                             <Meta title="Switch"/>
                         </Card>
                     </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Calendar Component" src={calendarItem}/>}
+                        >
+                            <Meta title="Calendar"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Date Picker Component" src={datepickerItem}/>}
+                        >
+                            <Meta title="Date Pick"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Timeline Component" src={timelineItem}/>}
+                        >
+                            <Meta title="Timeline"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Rate Component" src={rateItem}/>}
+                        >
+                            <Meta title="Rate"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Card Component" src={cardItem}/>}
+                        >
+                            <Meta title="Card"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Carousel Component" src={carouselItem}/>}
+                        >
+                            <Meta title="Carousel"/>
+                        </Card>
+                    </Col>
+                    <Col sm={12} md={6} lg={4} xl={3}>
+                        <Card
+                            hoverable
+                            cover={<img alt="Avatar Component" src={avatarItem}/>}
+                        >
+                            <Meta title="Avatar"/>
+                        </Card>
+                    </Col>
+                    
                     
                 </Row>
 
