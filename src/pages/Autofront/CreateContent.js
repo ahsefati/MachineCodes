@@ -11,20 +11,22 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 
 import Draggable from 'react-draggable';
 
+import { useCookies } from 'react-cookie';
+
 const { Header, Content } = Layout;
 const { Text } = Typography
 const { Option } = Select
 
 const CreateContent = (params) => {
-    // Containers for elements in fullscreen mode
-    const containerRef = useRef(null);
+    // Cookies functionality
+    const [cookies, setCookie, removeCookie] = useCookies();
 
     const [mcrows, setMcrows] = useState([])
     const [rowCounter, setRowCounter] = useState(0)
     const [pageName, setPageName] = useState("")
 
     const addRow = () => {
-        const newRow = { pageId: params.page.id, id: rowCounter + 1, justify: 'space-around', mccols: [] }
+        const newRow = { pageId: params.page.id, id: rowCounter + 1, justify: 'space-around', mccols: [], mccolcounter: 0 }
         setMcrows([...mcrows, newRow])
         setRowCounter(rowCounter + 1)
     }
@@ -52,17 +54,23 @@ const CreateContent = (params) => {
 
     // For animation on deleting a page
     const [loadings, setLoadings] = useState([]);
-    const enterLoading = (index) => {
+    const handleDeletePage = (index) => {
         if (params.pages.length > 1){
             setLoadings((prevLoadings) => {
-                
-                    const newLoadings = [...prevLoadings];
-                    newLoadings[index] = true;
-                    let pagesAfterRemove = params.pages.filter(page => page.id != params.selectedPage)
-                    params.setPages([...pagesAfterRemove])
-                    // BUG: If user tries to delete the first page when they have other pages available, it will crash!
-                    params.setSelectedPage(params.pages[0].id)
-                    return newLoadings;
+                // To remove cookies related to this page
+                let prefixForCookiesName = params.page.id + "/"
+                for (const [key, value] of Object.entries(cookies)) {
+                    if (key.startsWith(prefixForCookiesName)){
+                        removeCookie(key)
+                    }
+                }
+                const newLoadings = [...prevLoadings];
+                newLoadings[index] = true;
+                let pagesAfterRemove = params.pages.filter(page => page.id != params.selectedPage)
+                params.setPages([...pagesAfterRemove])
+                // BUG: If user tries to delete the first page when they have other pages available, it will crash!
+                params.setSelectedPage(params.pages[0].id)
+                return newLoadings;
             });
             setTimeout(() => {
                 setLoadings((prevLoadings) => {
@@ -173,7 +181,7 @@ const CreateContent = (params) => {
                                                         <Popconfirm
                                                             getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                                                             title="Are you sure to delete this page?"
-                                                            onConfirm={() => enterLoading(1)}
+                                                            onConfirm={() => handleDeletePage(1)}
                                                             placement="rightBottom"
                                                             okText="Yes"
                                                             cancelText="No"

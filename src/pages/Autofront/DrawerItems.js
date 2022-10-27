@@ -75,37 +75,42 @@ const DrawerItems = (params) => {
 
     return (
         <Drawer
-                title={"Items"}
-                height={params.sizeOfModal}
-                placement={'bottom'}
-                width={600}
-                onClose={params.closeModal}
-                open={params.openModal}
-                extra={
-                <Space style={{width:200}}>
-                    <Input.Search
-                            width="100%"
-                            allowClear
-                            placeholder="Search Here..."
-                            onChange={handleSearchComponents}
-                    />
-                    {params.sizeOfModal==="378px" && 
-                        <CaretUpOutlined onClick={()=>params.setSizeofModal('528px')} />
-                    }
-                    {params.sizeOfModal==="528px" &&
-                        <CaretDownOutlined onClick={()=>params.setSizeofModal('378px')} />
-                    }
-                </Space>
+            title={"Items"}
+            height={params.sizeOfModal}
+            placement={'bottom'}
+            width={600}
+            onClose={params.closeModal}
+            open={params.openModal}
+            extra={
+            <Space style={{width:200}}>
+                <Input.Search
+                        width="100%"
+                        allowClear
+                        placeholder="Search Here..."
+                        onChange={handleSearchComponents}
+                />
+                {params.sizeOfModal==="378px" && 
+                    <CaretUpOutlined onClick={()=>params.setSizeofModal('528px')} />
                 }
-            >
+                {params.sizeOfModal==="528px" &&
+                    <CaretDownOutlined onClick={()=>params.setSizeofModal('378px')} />
+                }
+            </Space>
+                }>
+
                 <Row gutter={[24,24]}>
                     
 
                     {
                         mainListOfItems.map(item=>{
                             return(
-                                <Col sm={12} md={6} lg={4} xl={3}>
+                                <Col key={item.id} sm={12} md={6} lg={4} xl={3}>
                                     <Card
+                                        onClick={()=>{
+                                            params.mccol.mccomponent = item.id
+                                            params.setMccols([...params.mccols])
+                                            console.log("I am from drawer: ", item.id)
+                                        }}
                                         hoverable
                                         cover={<img alt={item.alt} src={item.src}/>}
                                     >
