@@ -1,4 +1,4 @@
-import { Button, Layout, Card, Typography, Drawer, Space, Input, Divider, Row, Col} from 'antd';
+import { Button, Layout, Card, Typography, Drawer, Space, Input, Divider, Row, Col, Slider, message} from 'antd';
 import {CaretUpOutlined, CaretDownOutlined} from '@ant-design/icons';
 
 import React, {useState, useEffect } from 'react';
@@ -26,13 +26,51 @@ import avatarItem from '../../assets/AutoFront/TemplateBuilder/Items/AvatarItem.
 import calendarItem from '../../assets/AutoFront/TemplateBuilder/Items/CalendarItem.png'
 import segmentItem from '../../assets/AutoFront/TemplateBuilder/Items/SegmentItem.png'
 import timelineItem from '../../assets/AutoFront/TemplateBuilder/Items/TimelineItem.png'
+import tableItem from '../../assets/AutoFront/TemplateBuilder/Items/TableItem.png'
+import alerttextItem from '../../assets/AutoFront/TemplateBuilder/Items/AlerttextItem.png'
+
 
 const { Header, Content } = Layout;
 const {Text} = Typography
 const { Meta } = Card;
 
+const listOfItems = [
+    {id:1, title:'Header', alt:'Header Component', src:headerItem },
+    {id:2, title:'Text', alt:'Header Component', src:textItem },
+    {id:3, title:'Alert Text', alt:'Alert Text Component', src:alerttextItem },
+    {id:4, title:'Button', alt:'Button Component', src:buttonItem },
+    {id:5, title:'Divider', alt:'Divider Component', src:dividerItem },
+    {id:6, title:'Image', alt:'Image Component', src:imageItem },
+    {id:7, title:'Icon', alt:'Icon Component', src:iconItem },
+    {id:8, title:'Form', alt:'Form Component', src:formItem },
+    {id:9, title:'Text Input', alt:'Text Input Component', src:inputItem },
+    {id:10, title:'Checkbox', alt:'Checkbox Component', src:checkboxItem },
+    {id:11, title:'Radio', alt:'Radio Component', src:radioItem },
+    {id:12, title:'Select', alt:'Select Component', src:selectItem },
+    {id:13, title:'Tree Select', alt:'Tree Select Component', src:treeselectItem },
+    {id:18, title:'Segment', alt:'Segmented Component', src:segmentItem },
+    {id:14, title:'Slider', alt:'Slider Component', src:sliderItem },
+    {id:15, title:'Switch', alt:'Switch Component', src:switchItem },
+    {id:16, title:'Table', alt:'Table Component', src:tableItem },
+    {id:17, title:'Calendar', alt:'Calendar Component', src:calendarItem },
+    {id:19, title:'Date Picker', alt:'Date Picker Component', src:datepickerItem },
+    {id:20, title:'Timeline', alt:'Timeline Component', src:timelineItem },
+    {id:21, title:'Rate', alt:'Rate Component', src:rateItem },
+    {id:22, title:'Card', alt:'Slider Component', src:cardItem },
+    {id:23, title:'Carousel', alt:'Slider Component', src:carouselItem },
+    {id:24, title:'Avatar', alt:'Slider Component', src:avatarItem },
+
+    
+
+]
+
 const DrawerItems = (params) => {
     
+    const [mainListOfItems, setMainListOfItems] = useState(listOfItems)
+    const handleSearchComponents = (e) => {
+        let newList = listOfItems.filter(item=>item.title.toLowerCase().includes(e.target.value.toLowerCase())==true)
+        setMainListOfItems([...newList])
+    }
     
 
     return (
@@ -49,6 +87,7 @@ const DrawerItems = (params) => {
                             width="100%"
                             allowClear
                             placeholder="Search Here..."
+                            onChange={handleSearchComponents}
                     />
                     {params.sizeOfModal==="378px" && 
                         <CaretUpOutlined onClick={()=>params.setSizeofModal('528px')} />
@@ -61,182 +100,21 @@ const DrawerItems = (params) => {
             >
                 <Row gutter={[24,24]}>
                     
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Header Component" src={headerItem}/>}
-                        >
-                            <Meta title="Header"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Text Component" src={textItem}/>}
-                        >
-                            <Meta title="Text"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Button Component" src={buttonItem}/>}
-                        >
-                            <Meta title="Button"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Divider Component" style={{backgroundColor:'white'}} src={dividerItem}/>}
-                        >
-                            <Meta title="Divider"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Image Component" src={imageItem}/>}
-                        >
-                            <Meta title="Image"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Icon Component" src={iconItem}/>}
-                        >
-                            <Meta title="Icon"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}> 
-                        <Card
-                            hoverable
-                            cover={<img alt="Form Component" src={formItem}/>}
-                        >
-                            <Meta title="Form"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Input Component" src={inputItem}/>}
-                        >
-                            <Meta title="Text Input"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Checkbox Component" src={checkboxItem}/>}
-                        >
-                            <Meta title="Checkbox"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Radio Component" src={radioItem}/>}
-                        >
-                            <Meta title="Radio"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Select Component" src={selectItem}/>}
-                        >
-                            <Meta title="Select"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Treeselect Component" src={treeselectItem}/>}
-                        >
-                            <Meta title="Tree Select"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Segmented Component" src={segmentItem}/>}
-                        >
-                            <Meta title="Segment"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Slider Component" src={sliderItem}/>}
-                        >
-                            <Meta title="Slider"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Switch Component" src={switchItem}/>}
-                        >
-                            <Meta title="Switch"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Calendar Component" src={calendarItem}/>}
-                        >
-                            <Meta title="Calendar"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Date Picker Component" src={datepickerItem}/>}
-                        >
-                            <Meta title="Date Pick"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Timeline Component" src={timelineItem}/>}
-                        >
-                            <Meta title="Timeline"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Rate Component" src={rateItem}/>}
-                        >
-                            <Meta title="Rate"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Card Component" src={cardItem}/>}
-                        >
-                            <Meta title="Card"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Carousel Component" src={carouselItem}/>}
-                        >
-                            <Meta title="Carousel"/>
-                        </Card>
-                    </Col>
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                        <Card
-                            hoverable
-                            cover={<img alt="Avatar Component" src={avatarItem}/>}
-                        >
-                            <Meta title="Avatar"/>
-                        </Card>
-                    </Col>
+
+                    {
+                        mainListOfItems.map(item=>{
+                            return(
+                                <Col sm={12} md={6} lg={4} xl={3}>
+                                    <Card
+                                        hoverable
+                                        cover={<img alt={item.alt} src={item.src}/>}
+                                    >
+                                        <Meta title={item.title}/>
+                                    </Card>
+                                </Col>
+                            )
+                        })
+                    }
                     
                     
                 </Row>
