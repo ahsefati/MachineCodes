@@ -33,6 +33,7 @@ const MCCol = (params) => {
         params.setMccols(params.mccols.filter((mccol)=>(mccol.id != toRemove)))
         setOpen(false);
     }
+
     // For setting of column popover
     const [open, setOpen] = useState(false);
 
@@ -53,7 +54,7 @@ const MCCol = (params) => {
 
 
 
-    // Handle the Modal for choosing the component
+    // Handle the Modal for choosing the component (item)
     const [openModal, setOpenModal] = useState(false);
     const [sizeOfModal, setSizeofModal] = useState('378px')
     const showModal = () => {
@@ -64,6 +65,16 @@ const MCCol = (params) => {
         setOpenModal(false);
     };
 
+
+    // Hanlde the Modal for Setting of the selected component (item)
+    const [openSettingPanel, setOpenSettingPanel] = useState(false);
+    const showSettingPanel = () => {
+        setOpenSettingPanel(true);
+    };
+
+    const closeSettingPanel = () => {
+        setOpenSettingPanel(false);
+    };
 
     return (
         <Col style={{minHeight:'150px', minWidth:'100px', margin:'5px', border:params.createContentMode == "Edit Mode"?'1px solid':'0px', borderRadius:'5px',borderColor:'gray'}} xs={{span:params.mccol.spanSmall}} sm={{span:params.mccol.spanSmall}} md={{span:params.mccol.spanBig}} lg={{span:params.mccol.spanBig}} xl={{span:params.mccol.spanBig}} xxl={{span:params.mccol.spanBig}}>    
@@ -164,7 +175,7 @@ const MCCol = (params) => {
                                     }} 
                                     style={{cursor:'pointer', margin:'5px'}}
                                 />
-                                <FormOutlined style={{cursor:'pointer', margin:'5px'}} />
+                                <FormOutlined onClick={showSettingPanel} style={{cursor:'pointer', margin:'5px'}} />
                             </Row>
                             
                         }
@@ -186,7 +197,7 @@ const MCCol = (params) => {
             {/* Actual Component that this MCColumn will have: */}
             {params.mccol.mccomponent===1 &&
                 <Row justify='center' align='middle'>
-                    <HeaderItem mcrow={params.mcrow} mccol={params.mccol} createContentMode={params.createContentMode}/>
+                    <HeaderItem openSettingPanel={openSettingPanel} closeSettingPanel={closeSettingPanel} mcrow={params.mcrow} mccol={params.mccol} createContentMode={params.createContentMode}/>
                 </Row>
             }
 
