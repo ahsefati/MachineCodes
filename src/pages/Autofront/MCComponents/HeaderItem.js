@@ -19,37 +19,36 @@ const HeaderItem = (params) => {
         'headerBackgroundColor': 'inherit',
         'headerBorder': '0px',
         'headerBorderRadius': '0px',
+        'headerBorderColor': 'black',
         'headerFont':'Times New Roman (serif)'
     })
 
-    // if(cookies[prefixForCookiesName]){
-    //     // console.log({...cookies[prefixForCookiesName]})
-    //     // setHeaderItemCookies({...cookies[prefixForCookiesName]})
-    // }
-    console.log(headerItemCookies["headerText"])
+    const headerItemStyles = {
+        fontSize: headerItemCookies["headerSize"]==null?"12px":headerItemCookies["headerSize"],
+        color: headerItemCookies["headerColor"]==null?"black":headerItemCookies["headerColor"],
+        backgroundColor: headerItemCookies["headerBackgroundColor"]==null?"inherit":headerItemCookies["headerBackgroundColor"],
+        border: headerItemCookies["headerBorderWidth"]==null?"0px":headerItemCookies["headerBorderWidth"] + " solid ",
+        borderRadius: headerItemCookies["headerBorderRadius"]==null?"0px":headerItemCookies["headerBorderRadius"],
+        borderColor: headerItemCookies["headerBorderColor"]==null?"black":headerItemCookies["headerBorderColor"],
+        fontFamily: headerItemCookies["headerFont"]==null?"serif":headerItemCookies["headerFont"]
+    }
+
     useEffect(()=>{
-        console.log("I am going to save to the cookies...")
         let cookieStr = JSON.stringify(headerItemCookies)
-        console.log("To Save: ", cookieStr)
         setCookie(prefixForCookiesName, cookieStr)
     },[headerItemCookies])
-
-    //     setHeaderItemCookies([rawFeatures])
-    // }
-    // setHeaderItemCookies({...rawFeatures})
-    // setCookie(prefixForCookiesName, JSON.stringify(headerItemCookies))
     
-
 
     return (
         <>
             {params.createContentMode === "Edit Mode" &&
-                <Title style={{fontSize:'calc(16px + 2vw)'}} editable={{onChange: (value) => setHeaderItemCookies({...headerItemCookies, "headerText":value})}}>{headerItemCookies["headerText"]==null?"change!":headerItemCookies["headerText"]}</Title>
+                <Title style={headerItemStyles} editable={{onChange: (value) => setHeaderItemCookies({...headerItemCookies, "headerText":value})}}>{headerItemCookies["headerText"]==null?"change!":headerItemCookies["headerText"]}</Title>
             }
 
             {/* {params.createContentMode === "View Mode" &&
                 <Title style={{fontSize:'calc(16px + 2vw)'}}>{titleText}</Title>
             } */}
+            <button onClick={()=>{setHeaderItemCookies({...headerItemCookies, "headerBorderRadius":"2px"})}}>click</button>
         </>
     )
 }

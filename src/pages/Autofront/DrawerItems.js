@@ -75,6 +75,7 @@ const DrawerItems = (params) => {
 
     return (
         <Drawer
+            getContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
             title={"Items"}
             height={params.sizeOfModal}
             placement={'bottom'}

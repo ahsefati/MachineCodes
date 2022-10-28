@@ -1,5 +1,5 @@
-import { Col, Layout, Menu, Typography, Row, Select, Popover, Drawer, Space, Input } from 'antd';
-import {DeleteOutlined, SettingOutlined, PlusOutlined, CaretUpOutlined, CaretDownOutlined} from '@ant-design/icons';
+import { Col, Layout, Menu, Typography, Row, Select, Popover, Drawer, Space, Input, Divider } from 'antd';
+import {DeleteOutlined, SettingOutlined, PlusOutlined, FormOutlined} from '@ant-design/icons';
 
 import React, {useState, useEffect } from 'react';
 import DrawerItems from './DrawerItems';
@@ -69,7 +69,7 @@ const MCCol = (params) => {
         <Col style={{minHeight:'150px', minWidth:'100px', margin:'5px', border:params.createContentMode == "Edit Mode"?'1px solid':'0px', borderRadius:'5px',borderColor:'gray'}} xs={{span:params.mccol.spanSmall}} sm={{span:params.mccol.spanSmall}} md={{span:params.mccol.spanBig}} lg={{span:params.mccol.spanBig}} xl={{span:params.mccol.spanBig}} xxl={{span:params.mccol.spanBig}}>    
             <Row justify='start' align='middle'>
                 {params.createContentMode == "Edit Mode" &&
-                    <>
+                    <Row align='middle'>
                         <Popover
                             getPopupContainer={()=>document.querySelector('[data-tag="mainContainer"]')}
                             content={
@@ -155,15 +155,20 @@ const MCCol = (params) => {
                             >
                                 <SettingOutlined style={{cursor:'pointer', margin:'5px'}} />
                         </Popover>
+                        <Divider type='vertical'/>
                         {params.mccol.mccomponent !==null &&
-                            <DeleteOutlined onClick={()=>{
-                                    params.mccol.mccomponent=null
-                                    params.setMccols([...params.mccols])
-                                }} 
-                                style={{cursor:'pointer', margin:'5px'}}
-                            />
+                            <Row justify='center'>
+                                <DeleteOutlined onClick={()=>{
+                                        params.mccol.mccomponent=null
+                                        params.setMccols([...params.mccols])
+                                    }} 
+                                    style={{cursor:'pointer', margin:'5px'}}
+                                />
+                                <FormOutlined style={{cursor:'pointer', margin:'5px'}} />
+                            </Row>
+                            
                         }
-                    </>
+                    </Row>
                 }
         
             </Row>
