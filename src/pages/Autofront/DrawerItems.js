@@ -5,8 +5,9 @@ import React, {useState, useEffect } from 'react';
 import MCCol from './MCCol';
 
 import headerItem from '../../assets/AutoFront/TemplateBuilder/Items/HeaderItem.png'
-import textItem from '../../assets/AutoFront/TemplateBuilder/Items/TextItem.png'
+import alerttextItem from '../../assets/AutoFront/TemplateBuilder/Items/AlerttextItem.png'
 import buttonItem from '../../assets/AutoFront/TemplateBuilder/Items/ButtonItem.png'
+import spaceItem from '../../assets/AutoFront/TemplateBuilder/Items/SpaceItem.png'
 import dividerItem from '../../assets/AutoFront/TemplateBuilder/Items/DividerItem.png'
 import imageItem from '../../assets/AutoFront/TemplateBuilder/Items/ImageItem.png'
 import iconItem from '../../assets/AutoFront/TemplateBuilder/Items/IconItem.png'
@@ -27,7 +28,6 @@ import calendarItem from '../../assets/AutoFront/TemplateBuilder/Items/CalendarI
 import segmentItem from '../../assets/AutoFront/TemplateBuilder/Items/SegmentItem.png'
 import timelineItem from '../../assets/AutoFront/TemplateBuilder/Items/TimelineItem.png'
 import tableItem from '../../assets/AutoFront/TemplateBuilder/Items/TableItem.png'
-import alerttextItem from '../../assets/AutoFront/TemplateBuilder/Items/AlerttextItem.png'
 
 
 const { Header, Content } = Layout;
@@ -35,10 +35,10 @@ const {Text} = Typography
 const { Meta } = Card;
 
 const listOfItems = [
-    {id:1, title:'Header', alt:'Header Component', src:headerItem },
-    {id:2, title:'Text', alt:'Header Component', src:textItem },
-    {id:3, title:'Alert Text', alt:'Alert Text Component', src:alerttextItem },
-    {id:4, title:'Button', alt:'Button Component', src:buttonItem },
+    {id:1, title:'Text', alt:'Text Component', src:headerItem },
+    {id:2, title:'Alert Text', alt:'Alert Text Component', src:alerttextItem },
+    {id:3, title:'Button', alt:'Button Component', src:buttonItem },
+    {id:4, title:'Empty Space', alt:'Empty Space Component', src:spaceItem },
     {id:5, title:'Divider', alt:'Divider Component', src:dividerItem },
     {id:6, title:'Image', alt:'Image Component', src:imageItem },
     {id:7, title:'Icon', alt:'Icon Component', src:iconItem },
@@ -110,7 +110,7 @@ const DrawerItems = (params) => {
                                         onClick={()=>{
                                             params.mccol.mccomponent = item.id
                                             params.setMccols([...params.mccols])
-                                            console.log("I am from drawer: ", item.id)
+                                            params.closeModal()
                                         }}
                                         hoverable
                                         cover={<img alt={item.alt} src={item.src}/>}

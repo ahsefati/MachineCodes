@@ -8,6 +8,7 @@ import { useCookies } from 'react-cookie';
 
 // import all the items
 import HeaderItem from './MCComponents/HeaderItem';
+import AlertItem from './MCComponents/AlertItem';
 
 const { Header, Content } = Layout;
 const {Option} = Select
@@ -77,7 +78,7 @@ const MCCol = (params) => {
     };
 
     return (
-        <Col style={{minHeight:'150px', minWidth:'100px', margin:'5px', border:params.createContentMode == "Edit Mode"?'1px solid':'0px', borderRadius:'5px',borderColor:'gray'}} xs={{span:params.mccol.spanSmall}} sm={{span:params.mccol.spanSmall}} md={{span:params.mccol.spanBig}} lg={{span:params.mccol.spanBig}} xl={{span:params.mccol.spanBig}} xxl={{span:params.mccol.spanBig}}>    
+        <Col style={{minHeight:params.createContentMode == "Edit Mode"?'150px':'0px', minWidth:'100px', margin:'5px', border:params.createContentMode == "Edit Mode"?'1px solid':'0px', borderRadius:'5px',borderColor:'gray'}} xs={{span:params.mccol.spanSmall}} sm={{span:params.mccol.spanSmall}} md={{span:params.mccol.spanBig}} lg={{span:params.mccol.spanBig}} xl={{span:params.mccol.spanBig}} xxl={{span:params.mccol.spanBig}}>    
             <Row justify='start' align='middle'>
                 {params.createContentMode == "Edit Mode" &&
                     <Row align='middle'>
@@ -196,9 +197,10 @@ const MCCol = (params) => {
 
             {/* Actual Component that this MCColumn will have: */}
             {params.mccol.mccomponent===1 &&
-                <Row justify='center' align='middle'>
-                    <HeaderItem openSettingPanel={openSettingPanel} closeSettingPanel={closeSettingPanel} mcrow={params.mcrow} mccol={params.mccol} createContentMode={params.createContentMode}/>
-                </Row>
+                <HeaderItem openSettingPanel={openSettingPanel} closeSettingPanel={closeSettingPanel} mcrow={params.mcrow} mccol={params.mccol} createContentMode={params.createContentMode}/>
+            }
+            {params.mccol.mccomponent===2 &&
+                <AlertItem openSettingPanel={openSettingPanel} closeSettingPanel={closeSettingPanel} mcrow={params.mcrow} mccol={params.mccol} createContentMode={params.createContentMode}/>
             }
 
 

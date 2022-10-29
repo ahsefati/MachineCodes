@@ -99,7 +99,9 @@ const HeaderItem = (params) => {
                                     
                                     <SliderPicker color={headerItemCookies["headerColor"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerColor":color.hex})} />
                                     <br/>
-                                    <CirclePicker colors={["white", "black", "green", "blue", "red"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerColor":color.hex})}/>
+                                    <Row>
+                                        <CirclePicker colors={["white", "gray", "black",]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerColor":color.hex})}/>
+                                    </Row>
                                     
                             </Card>
                         </Col>
@@ -112,7 +114,9 @@ const HeaderItem = (params) => {
                                 >
                                     <SliderPicker color={headerItemCookies["headerBackgroundColor"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerBackgroundColor":color.hex})} />
                                     <br/>
-                                    <CirclePicker colors={["white", "black", "green", "blue", "red"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerBackgroundColor":color.hex})}/>
+                                    <Row>
+                                        <CirclePicker colors={["white", "gray", "black",]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerBackgroundColor":color.hex})}/>
+                                    </Row>
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={4} xl={4}>
@@ -139,7 +143,9 @@ const HeaderItem = (params) => {
                                     
                                     <SliderPicker color={headerItemCookies["headerBorderColor"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerBorderColor":color.hex})} />
                                     <br/>
-                                    <CirclePicker colors={["white", "black", "green", "blue", "red"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerBorderColor":color.hex})}/>
+                                    <Row>
+                                        <CirclePicker colors={["white", "gray", "black"]} onChange={(color)=>setHeaderItemCookies({...headerItemCookies, "headerBorderColor":color.hex})}/>
+                                    </Row>
                                     
                             </Card>
                         </Col>
