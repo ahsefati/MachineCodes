@@ -12,7 +12,7 @@ const AutoFrontend = () => {
         <>
             <Row justify='space-around' align='middle' style={{marginTop:'1%'}}>
                 <Space>
-                    <Segmented style={{color:'gray', fontWeight:'bold', backgroundColor:'#bae7ff'}} options={['Ready-to-Use', 'Template Builder', 'Front Builder']} defaultValue="Ready-to-Use" value={offerValue} onChange={setOfferValue} />
+                    <Segmented style={{color:'gray', fontWeight:'bold', backgroundColor:'#bae7ff'}} options={['Ready-to-Use', 'Template Builder']} defaultValue="Ready-to-Use" value={offerValue} onChange={setOfferValue} />
                 </Space>
             </Row>
 
